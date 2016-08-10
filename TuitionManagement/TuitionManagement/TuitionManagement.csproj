@@ -282,9 +282,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <Content Include="Scripts\Account.js" />
+    <Content Include="Scripts\Controller\Account.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\Converter.js" />
+    <Content Include="Scripts\Controller\Converter.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

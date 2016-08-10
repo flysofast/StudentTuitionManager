@@ -12,14 +12,14 @@
         dataType: 'json',
         type: 'POST',
         error: function () {
-            sweetAlert("Error...", "Cannot create new account! \n Cannot get to server API", "error");
+            swal("Error...", "Cannot create new account! \n Cannot get to server API", "error");
         },
-        success: function (data) {
+        success: function (data) { 
             console.log(data);
             if (data == 1) {
                 swal("Successfully!", "Created new account!", "success")
             } else {
-                sweetAlert("Error...", "Cannot create new account!", "error");
+                swal("Error...", "Cannot create new account!", "error");
             }
         }
     });

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e7e0415bdb4242cf95304d61da23cfd5" Name="Diagram1">
+        <EntityTypeShape EntityType="FeeManagementModel.Class" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="FeeManagementModel.FeeAccount" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FeeManagementModel.FeeLevel" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FeeManagementModel.Function" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FeeManagementModel.Invoice" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FeeManagementModel.Object" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FeeManagementModel.Rate" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FeeManagementModel.Receipt" Width="1.5" PointX="9.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FeeManagementModel.Role" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FeeManagementModel.RoleFunction" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FeeManagementModel.Student" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="FeeManagementModel.SubInvoice" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FeeManagementModel.vwActivation" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FeeManagementModel.vwInvoice" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FeeManagementModel.vwInvoiceWithoutClass" Width="1.5" PointX="11.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FeeManagementModel.vwReceipt" Width="1.5" PointX="7.75" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="FeeManagementModel.FK_Class_ClassType" ManuallyRouted="false" />
+        <AssociationConnector Association="FeeManagementModel.FK_FeeAccount_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="FeeManagementModel.FK_FeeLevel_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="FeeManagementModel.FK_Invoice_FeeLevel" ManuallyRouted="false" />
+        <AssociationConnector Association="FeeManagementModel.FK_SubOrder_FeeLevel" ManuallyRouted="false" />
+        <AssociationConnector Association="FeeManagementModel.FK_RoleFunction_Function1" ManuallyRouted="false" />
+        <AssociationConnector Association="FeeManagementModel.FK_Invoice_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="FeeManagementModel.FK_Order_Invoice" ManuallyRouted="false" />
+        <AssociationConnector Association="FeeManagementModel.FK_Receipt_Invoice1" ManuallyRouted="false" />
+        <AssociationConnector Association="FeeManagementModel.FK_SubOrder_Rate" ManuallyRouted="false" />
+        <AssociationConnector Association="FeeManagementModel.FK_RoleFunction_Role1" ManuallyRouted="false" />
+        <AssociationConnector Association="FeeManagementModel.Student_Class" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

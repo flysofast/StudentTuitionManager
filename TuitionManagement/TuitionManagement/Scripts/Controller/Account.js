@@ -9,7 +9,7 @@
     $.ajax({
         url: 'Create_Api',
         data: JSON.stringify(obj),
-        dataType: 'jsonp',
+        dataType: 'json',
         type: 'POST',
         error: function () {
             sweetAlert("Error...", "Cannot create new account! \n Cannot get to server API", "error");

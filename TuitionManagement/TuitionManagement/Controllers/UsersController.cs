@@ -34,12 +34,18 @@ namespace TuitionManagement.Controllers
 
         public JsonResult Create_Api(FeeAccount account)
         {
-            db.FeeAccount.Add(account);
-            if (db.SaveChanges() == 1)
-            {
-                return Json(1, JsonRequestBehavior.AllowGet);
+            try { 
+                db.FeeAccount.Add(account);
+                if (db.SaveChanges() == 1)
+                {
+                    return Json(1, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(0, JsonRequestBehavior.AllowGet);
+                }
             }
-            else
+            catch (Exception e)
             {
                 return Json(0, JsonRequestBehavior.AllowGet);
             }

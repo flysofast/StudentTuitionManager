@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+<script src="../../Scripts/Account.js"></script>
 <form role="form">
   <div class="form-group">
     <label for="username">Email address:</label>
@@ -23,7 +23,7 @@
         <option value="1">Staff</option>
       </select>
     </div>
-  <button type="submit" class="btn btn-default" onclick="CreateAccount()">Submit</button>
+  <button type="button" class="btn btn-default" onclick="CreateAccount()">Submit</button>
 </form>
 
 </asp:Content>

@@ -1,13 +1,21 @@
 ﻿function CreateAccount() {
+    var obj = {
+        Username: $("#username").val(),
+        Password: $("#password").val(),
+        Password: $("#role").val(),
+        isActive: true,
+    };
+
     $.ajax({
-        url: 'http://api.joind.in/v2.1/talks/10889',
-        data: STR,
+        url: 'Create_Api',
+        data: JSON.stringify(obj),
         dataType: 'jsonp',
         type: 'POST',
         error: function () {
-            $('#info').html('<p>An error has occurred</p>');
+            sweetAlert("Error...", "Cannot create new account! \n Cannot get to server API", "error");
         },
         success: function (data) {
+            console.log(data);
             if (data == 1) {
                 swal("Successfully!", "Created new account!", "success")
             } else {

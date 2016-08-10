@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<script src="../../Scripts/Account.js"></script>
+    <script src="../../Scripts/Controller/Account.js"></script>
 <form role="form">
   <div class="form-group">
     <label for="username">Email address:</label>

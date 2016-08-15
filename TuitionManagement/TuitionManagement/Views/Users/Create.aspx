@@ -19,8 +19,8 @@
       <label for="role">Role:</label>
       <select class="form-control" id="role">
         <option value>Please select Role</option>
-        <option value="0">Admin</option>
-        <option value="1">Staff</option>
+        <option value="1">Admin</option>
+        <option value="2">Staff</option>
       </select>
     </div>
   <button type="button" class="btn btn-default" onclick="CreateAccount()">Submit</button>

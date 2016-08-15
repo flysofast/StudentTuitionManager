@@ -7,10 +7,11 @@ using TuitionManagement.Models;
 
 namespace TuitionManagement.Controllers
 {
-    public class UsersController : Controller
+    public class FeeLevelController : Controller
     {
         //
-        // GET: /Users/
+        // GET: /FeeLevel/
+
         FeeManagementEntities db = new FeeManagementEntities();
         public ActionResult Index()
         {
@@ -24,25 +25,26 @@ namespace TuitionManagement.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            ViewData["data"] = db.FeeAccount.Where(b => b.AccountId == id).FirstOrDefault();
+            ViewData["data"] = db.FeeLevel.Where(b => b.FeeLevelId == id).FirstOrDefault();
             return View();
         }
 
-        public ActionResult Delete(int AccountId)
+        public ActionResult Delete(int FeeLevelId)
         {
             return View();
         }
 
         public ActionResult Search()
         {
-            ViewData["data"] = db.FeeAccount.Where(b => b.IsDelete == false).ToList();
+            ViewData["data"] = db.FeeLevel.ToList();
             return View();
         }
 
-        public JsonResult Create_Api(FeeAccount account)
+        public JsonResult Create_Api(FeeLevel feelevel)
         {
-            try { 
-                db.FeeAccount.Add(account);
+            try
+            {
+                db.FeeLevel.Add(feelevel);
                 if (db.SaveChanges() == 1)
                 {
                     return Json(1, JsonRequestBehavior.AllowGet);
@@ -58,13 +60,14 @@ namespace TuitionManagement.Controllers
             }
         }
 
-        public JsonResult Update_Api(FeeAccount account)
+        public JsonResult Update_Api(FeeLevel feelevel)
         {
-            FeeAccount accountEdit = db.FeeAccount.Where(b => b.AccountId == account.AccountId).FirstOrDefault();
-            accountEdit.Username = account.Username;
-            accountEdit.Password = account.Password;
-            accountEdit.IsDelete = account.IsDelete;
-            accountEdit.RoleId = account.RoleId;
+            FeeLevel feelevelEdit = db.FeeLevel.Where(b => b.FeeLevelId == feelevel.FeeLevelId).FirstOrDefault();
+            feelevelEdit.FeeLevelId = feelevel.FeeLevelId;
+            feelevelEdit.PaidTime = feelevel.PaidTime;
+            feelevelEdit.TotalMoney = feelevel.TotalMoney;
+            feelevelEdit.Period = feelevel.Period;
+            feelevelEdit.ObjectID = feelevel.ObjectID;
 
             if (db.SaveChanges() == 1)
             {
@@ -76,10 +79,11 @@ namespace TuitionManagement.Controllers
             }
         }
 
-        public JsonResult Deactivate_Api(FeeAccount account)
+        public JsonResult Deactivate_Api(FeeLevel feelevel)
         {
-            FeeAccount accountEdit = db.FeeAccount.Where(b => b.AccountId == account.AccountId).FirstOrDefault();
-            accountEdit.IsDelete = true;
+            FeeLevel feelevelEdit = db.FeeLevel.Where(b => b.FeeLevelId == feelevel.FeeLevelId).FirstOrDefault();
+            db.FeeLevel.Attach(feelevel);
+            db.FeeLevel.Remove(feelevel);
 
             if (db.SaveChanges() == 1)
             {

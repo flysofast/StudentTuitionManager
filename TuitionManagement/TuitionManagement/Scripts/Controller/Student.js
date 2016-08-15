@@ -1,4 +1,27 @@
 ﻿//------------------------DATA PROCESS FUNCTIONS--------------------------------
+
+function FindStudentByID(studentID) {
+    console.log("FIND ID" + studentID);
+
+    $.ajax({
+        url: 'FindStudentByIDAPI',
+        data: JSON.stringify({ ID: studentID }),
+        type: 'POST',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        error: function () {
+            swal("Action failed", "Couldn't find this student ", "error");
+        },
+        success: function (result) {
+            if (result) {
+                swal("ASDASD", "ASDDAS", "success");
+                return result;
+            }
+
+
+        }
+    });
+}
 function Create() {
     var obj = {
         Username: $("#username").val(),
@@ -26,12 +49,7 @@ function Create() {
     });
 }
 
-Date.prototype.ddmmyyyy = function () {
-    var mm = this.getMonth() + 1; // getMonth() is zero-based
-    var dd = this.getDate();
 
-    return [ dd,'/', mm,'/', this.getFullYear(), ].join(''); // padding
-};
 
 function LoadTableData() {
     $.ajax({
@@ -55,6 +73,8 @@ function LoadTableData() {
             });
 
             $('#StudentList tbody').html(html);
+
+            //Row selecting
             $('#StudentList tbody tr').click(function () {
                 var ID = $('.StudentIDCell', $(this)).text();
                 console.log("FIND");
@@ -64,32 +84,17 @@ function LoadTableData() {
     });
 }
 
-function FindStudentByID(studentID) {
-    console.log("FIND ID"+ studentID);
 
-    $.ajax({
-        url: 'FindStudentByIDAPI',
-        data: JSON.stringify(studentID),
-        contentType: "application/json; charset=utf-8",
-        dataType: 'json',
-        type: 'POST',
-        error: function () {
-            swal("Action failed", "Couldn't find this student", "error");
-        },
-        success: function (result) {
-            if (result) {
-                swal("ASDASD", result.text(), "success");
-                return result;
-            }
-
-           
-        }
-    });
-}
-
-//------------------------------PAGE INIT FUNCTIONS--------------------------------
+//------------------------------UTILITIES--------------------------------
 $(function () {
     $("#datepicker").datepicker();
     LoadTableData();
     
 });
+
+Date.prototype.ddmmyyyy = function () {
+    var mm = this.getMonth() + 1; // getMonth() is zero-based
+    var dd = this.getDate();
+
+    return [dd, '/', mm, '/', this.getFullYear(), ].join(''); // padding
+};

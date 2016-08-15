@@ -44,7 +44,7 @@
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10">
-                <table id="StudentList" class="table table-hover table-responsive table-bordered table-stripped">
+                <table id="StudentList" class="table table-hover table-responsive table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Student Code</th>

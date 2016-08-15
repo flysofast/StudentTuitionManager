@@ -12,7 +12,7 @@ namespace TuitionManagement.Controllers
         //
         // GET: /Object/
 
-        //FeeManagementEntities db = new FeeManagementEntities();
+        FeeManagementEntities db = new FeeManagementEntities();
         public ActionResult Index()
         {
             return View();

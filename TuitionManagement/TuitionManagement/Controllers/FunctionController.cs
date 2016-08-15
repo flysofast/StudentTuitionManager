@@ -7,10 +7,11 @@ using TuitionManagement.Models;
 
 namespace TuitionManagement.Controllers
 {
-    public class UsersController : Controller
+    public class FunctionController : Controller
     {
         //
-        // GET: /Users/
+        // GET: /Function/
+
         FeeManagementEntities db = new FeeManagementEntities();
         public ActionResult Index()
         {
@@ -24,25 +25,26 @@ namespace TuitionManagement.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            ViewData["data"] = db.FeeAccount.Where(b => b.AccountId == id).FirstOrDefault();
+            ViewData["data"] = db.Function.Where(b => b.FunctionId == id).FirstOrDefault();
             return View();
         }
 
-        public ActionResult Delete(int AccountId)
+        public ActionResult Delete(int FunctionId)
         {
             return View();
         }
 
         public ActionResult Search()
         {
-            ViewData["data"] = db.FeeAccount.Where(b => b.IsDelete == false).ToList();
+            ViewData["data"] = db.Function.ToList();
             return View();
         }
 
-        public JsonResult Create_Api(FeeAccount account)
+        public JsonResult Create_Api(Function function)
         {
-            try { 
-                db.FeeAccount.Add(account);
+            try
+            {
+                db.Function.Add(function);
                 if (db.SaveChanges() == 1)
                 {
                     return Json(1, JsonRequestBehavior.AllowGet);
@@ -58,13 +60,11 @@ namespace TuitionManagement.Controllers
             }
         }
 
-        public JsonResult Update_Api(FeeAccount account)
+        public JsonResult Update_Api(Function function)
         {
-            FeeAccount accountEdit = db.FeeAccount.Where(b => b.AccountId == account.AccountId).FirstOrDefault();
-            accountEdit.Username = account.Username;
-            accountEdit.Password = account.Password;
-            accountEdit.IsDelete = account.IsDelete;
-            accountEdit.RoleId = account.RoleId;
+            Function functionEdit = db.Function.Where(b => b.FunctionId == function.FunctionId).FirstOrDefault();
+            functionEdit.FunctionName = function.FunctionName;
+            functionEdit.Description = function.Description;
 
             if (db.SaveChanges() == 1)
             {
@@ -76,10 +76,11 @@ namespace TuitionManagement.Controllers
             }
         }
 
-        public JsonResult Deactivate_Api(FeeAccount account)
+        public JsonResult Deactivate_Api(Function function)
         {
-            FeeAccount accountEdit = db.FeeAccount.Where(b => b.AccountId == account.AccountId).FirstOrDefault();
-            accountEdit.IsDelete = true;
+            Function functionEdit = db.Function.Where(b => b.FunctionId == function.FunctionId).FirstOrDefault();
+            db.Function.Attach(functionEdit);
+            db.Function.Remove(functionEdit);
 
             if (db.SaveChanges() == 1)
             {

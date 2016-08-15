@@ -7,10 +7,12 @@ using TuitionManagement.Models;
 
 namespace TuitionManagement.Controllers
 {
-    public class UsersController : Controller
+    public class ReceiptController : Controller
     {
         //
-        // GET: /Users/
+        // GET: /Receipt/
+
+
         FeeManagementEntities db = new FeeManagementEntities();
         public ActionResult Index()
         {
@@ -24,25 +26,26 @@ namespace TuitionManagement.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            ViewData["data"] = db.FeeAccount.Where(b => b.AccountId == id).FirstOrDefault();
+            ViewData["data"] = db.Receipt.Where(b => b.ReceiptID == id).FirstOrDefault();
             return View();
         }
 
-        public ActionResult Delete(int AccountId)
+        public ActionResult Delete(int ReceiptID)
         {
             return View();
         }
 
         public ActionResult Search()
         {
-            ViewData["data"] = db.FeeAccount.Where(b => b.IsDelete == false).ToList();
+            ViewData["data"] = db.Receipt.ToList();
             return View();
         }
 
-        public JsonResult Create_Api(FeeAccount account)
+        public JsonResult Create_Api(Receipt receipt)
         {
-            try { 
-                db.FeeAccount.Add(account);
+            try
+            {
+                db.Receipt.Add(receipt);
                 if (db.SaveChanges() == 1)
                 {
                     return Json(1, JsonRequestBehavior.AllowGet);
@@ -58,13 +61,16 @@ namespace TuitionManagement.Controllers
             }
         }
 
-        public JsonResult Update_Api(FeeAccount account)
+        public JsonResult Update_Api(Receipt receipt)
         {
-            FeeAccount accountEdit = db.FeeAccount.Where(b => b.AccountId == account.AccountId).FirstOrDefault();
-            accountEdit.Username = account.Username;
-            accountEdit.Password = account.Password;
-            accountEdit.IsDelete = account.IsDelete;
-            accountEdit.RoleId = account.RoleId;
+            Receipt receiptEdit = db.Receipt.Where(b => b.ReceiptID == receipt.ReceiptID).FirstOrDefault();
+            receiptEdit.InvoiceID = receipt.InvoiceID;
+            receiptEdit.FeeLevelId = receipt.FeeLevelId;
+            receiptEdit.FeeObjectId = receipt.FeeObjectId;
+            receiptEdit.RateId = receipt.RateId;
+            receiptEdit.Money = receipt.Money;
+            receiptEdit.FeeDate = receipt.FeeDate;
+            receiptEdit.Notes = receipt.Notes;
 
             if (db.SaveChanges() == 1)
             {
@@ -76,10 +82,12 @@ namespace TuitionManagement.Controllers
             }
         }
 
-        public JsonResult Deactivate_Api(FeeAccount account)
+        public JsonResult Deactivate_Api(Receipt receipt)
         {
-            FeeAccount accountEdit = db.FeeAccount.Where(b => b.AccountId == account.AccountId).FirstOrDefault();
-            accountEdit.IsDelete = true;
+            Receipt receiptEdit = db.Receipt.Where(b => b.ReceiptID == receipt.ReceiptID).FirstOrDefault();
+            db.Receipt.Attach(receipt);
+            db.Receipt.Remove(receipt);
+
 
             if (db.SaveChanges() == 1)
             {
@@ -90,6 +98,5 @@ namespace TuitionManagement.Controllers
                 return Json(0, JsonRequestBehavior.AllowGet);
             }
         }
-
     }
 }

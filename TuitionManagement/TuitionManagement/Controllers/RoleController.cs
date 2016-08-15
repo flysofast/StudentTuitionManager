@@ -7,10 +7,11 @@ using TuitionManagement.Models;
 
 namespace TuitionManagement.Controllers
 {
-    public class UsersController : Controller
+    public class RoleController : Controller
     {
         //
-        // GET: /Users/
+        // GET: /Role/
+
         FeeManagementEntities db = new FeeManagementEntities();
         public ActionResult Index()
         {
@@ -24,25 +25,26 @@ namespace TuitionManagement.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            ViewData["data"] = db.FeeAccount.Where(b => b.AccountId == id).FirstOrDefault();
+            ViewData["data"] = db.Role.Where(b => b.RoleId == id).FirstOrDefault();
             return View();
         }
 
-        public ActionResult Delete(int AccountId)
+        public ActionResult Delete(int RoleId)
         {
             return View();
         }
 
         public ActionResult Search()
         {
-            ViewData["data"] = db.FeeAccount.Where(b => b.IsDelete == false).ToList();
+            ViewData["data"] = db.Role.Where(b => b.IsDelete == false).ToList();
             return View();
         }
 
-        public JsonResult Create_Api(FeeAccount account)
+        public JsonResult Create_Api(Role role)
         {
-            try { 
-                db.FeeAccount.Add(account);
+            try
+            {
+                db.Role.Add(role);
                 if (db.SaveChanges() == 1)
                 {
                     return Json(1, JsonRequestBehavior.AllowGet);
@@ -58,13 +60,10 @@ namespace TuitionManagement.Controllers
             }
         }
 
-        public JsonResult Update_Api(FeeAccount account)
+        public JsonResult Update_Api(Role role)
         {
-            FeeAccount accountEdit = db.FeeAccount.Where(b => b.AccountId == account.AccountId).FirstOrDefault();
-            accountEdit.Username = account.Username;
-            accountEdit.Password = account.Password;
-            accountEdit.IsDelete = account.IsDelete;
-            accountEdit.RoleId = account.RoleId;
+            Role roleEdit = db.Role.Where(b => b.RoleId == role.RoleId).FirstOrDefault();
+            roleEdit.RoleName = role.RoleName;
 
             if (db.SaveChanges() == 1)
             {
@@ -76,10 +75,10 @@ namespace TuitionManagement.Controllers
             }
         }
 
-        public JsonResult Deactivate_Api(FeeAccount account)
+        public JsonResult Deactivate_Api(Role role)
         {
-            FeeAccount accountEdit = db.FeeAccount.Where(b => b.AccountId == account.AccountId).FirstOrDefault();
-            accountEdit.IsDelete = true;
+            Role roleEdit = db.Role.Where(b => b.RoleId == role.RoleId).FirstOrDefault();
+            roleEdit.IsDelete = true;
 
             if (db.SaveChanges() == 1)
             {

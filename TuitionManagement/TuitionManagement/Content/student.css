@@ -1,0 +1,9 @@
+﻿#form-table{
+    border:none;
+    width:100%;
+     border-collapse:separate;
+    border-spacing:0 5px;
+}
+#StudentList tr:hover{
+    cursor:pointer;
+}

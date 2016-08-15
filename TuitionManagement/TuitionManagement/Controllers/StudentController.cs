@@ -30,7 +30,7 @@ namespace TuitionManagement.Controllers
 
         public JsonResult FindStudentByIDAPI(int ID)
         {
-            var result = db.Student.Find(ID);
+            Student result = db.Student.Find(ID);
             if (result == null)
             {
                 return Json(0, JsonRequestBehavior.AllowGet);

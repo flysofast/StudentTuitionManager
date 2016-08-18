@@ -14,11 +14,14 @@ function FindStudentByID(studentID) {
         },
         success: function (result) {
             if (result) {
-                swal("ASDASD", "ASDDAS", "success");
-                return result;
+                //console.log(result);
+
+                var birthday = new Date(parseInt(result['Birthday'].replace('/Date(', ''))).ddmmyyyy();
+                $('#tbStudentCode').val(result['StudentId']);
+                $('#dpBirthday').val(birthday);
+
+                return  JSON.stringify({data: result }) ;
             }
-
-
         }
     });
 }
@@ -78,7 +81,7 @@ function LoadTableData() {
             $('#StudentList tbody tr').click(function () {
                 var ID = $('.StudentIDCell', $(this)).text();
                 console.log("FIND");
-                FindStudentByID(ID);
+                PopulateDataToFormControls(FindStudentByID(ID));
             });
         }
     });
@@ -86,10 +89,22 @@ function LoadTableData() {
 
 
 //------------------------------UTILITIES--------------------------------
+function PopulateDataToFormControls(data) {
+    try {
+        //json = $.parseJSON(data);
+        console.log(data);
+    } catch (e) {
+        swal("ERROR", e.message, "error");
+        // not json
+    }
+
+
+
+}
 $(function () {
     $("#datepicker").datepicker();
     LoadTableData();
-    
+
 });
 
 Date.prototype.ddmmyyyy = function () {

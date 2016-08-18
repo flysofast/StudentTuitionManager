@@ -13,7 +13,7 @@
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Student Management
     <span class="caret"></span></a>
     <ul class="dropdown-menu">
-        <li><a href="#">Student Information</a></li>
+        <li><a href="student/index">Student Information</a></li>
         <li><a href="#">Class Specification</a></li>
     </ul>
 </li>

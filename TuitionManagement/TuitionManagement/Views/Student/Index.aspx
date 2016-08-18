@@ -3,7 +3,7 @@
 <asp:Content ID="Content" ContentPlaceHolderID="Header" runat="server">
     <link href="../../Content/student.css" rel="stylesheet" />
     <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" type="text/javascript"></script>
     <script src="../../Scripts/Controller/Student.js" type="text/javascript"></script>
     
 </asp:Content>
@@ -92,7 +92,7 @@
                     <tr>
                         <td>Birthday (*):</td>
                         <td>
-                            <input type="text" id="datepicker" class="form-control"></td>
+                            <input type="text" id="dpBirthday" class="form-control"></td>
                     </tr>
                     <tr>
                         <td>Address (*):</td>

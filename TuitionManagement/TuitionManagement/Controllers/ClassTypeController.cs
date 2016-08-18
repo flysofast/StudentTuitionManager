@@ -7,7 +7,7 @@ using TuitionManagement.Models;
 
 namespace TuitionManagement.Controllers
 {
-    public class ObjectController : Controller
+    public class ClassTypeController : Controller
     {
         FeeManagementEntities db = new FeeManagementEntities();
         public ActionResult Index()

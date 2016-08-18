@@ -5,7 +5,9 @@
     <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" type="text/javascript"></script>
     <script src="../../Scripts/Controller/Student.js" type="text/javascript"></script>
-    
+    <script>
+ 
+  </script>
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Student management
@@ -84,9 +86,9 @@
                         <td>Gender:</td>
                         <td>
                             <label class="radio-inline">
-                                <input type="radio" name="rdbGender" value="male" checked>Male</label>
+                                <input id="rdbMale" type="radio" name="rdbGender" value="male" >Male</label>
                             <label class="radio-inline">
-                                <input type="radio" name="rdbGender" value="female">Female</label>
+                                <input id="rdbFemale" type="radio" name="rdbGender" value="female">Female</label>
                         </td>
                     </tr>
                     <tr>
@@ -111,18 +113,15 @@
                     <tr>
                         <td>Email:</td>
                         <td>
-                            <input type="text" id="tbEmail" class="form-control" />
+                            <input type="email" id="tbEmail" class="form-control" />
 
                         </td>
                     </tr>
                     <tr>
                         <td>Class type (*):</td>
                         <td>
-                            <select class="form-control">
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="mercedes">Mercedes</option>
-                                <option value="audi">Audi</option>
+                            <select id="opClassType" class="form-control">
+                                
                             </select>
 
                         </td>

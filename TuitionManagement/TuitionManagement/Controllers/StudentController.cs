@@ -27,12 +27,17 @@ namespace TuitionManagement.Controllers
 
         public JsonResult LoadTableDataAPI()
         {
-            return Json(db.Student.Select(p => new { p.StudentId, p.StudentName, p.Birthday }).ToList(), JsonRequestBehavior.AllowGet);
+            return Json(db.Student.Select(p => new { p.StudentId, p.StudentCode, p.StudentName, p.Birthday }).ToList(), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult FindStudentByIDAPI(int ID)
+        //public JsonResult GetClassesInfo()
+        //{
+        //    var result=db.
+        //}
+
+        public JsonResult FindStudentByIDAPI(int id)
         {
-            var result = db.Student.Where(p => p.StudentId == ID).Select(p => new 
+            var result = db.vwInvoice.Where(p => p.StudentId == id).Select(p => new
             {
                 p.StudentId,
                 p.StudentName,
@@ -42,10 +47,10 @@ namespace TuitionManagement.Controllers
                 p.Address,
                 p.Email,
                 p.Phone,
-                Classes = p.Class.Select(q => new { q.ClassId, q.ClassName }),
-                Invoices = p.Invoice.Select(q => new { q.InvoiceId })
-                
-            }).First() ;
+                //Classes = p.Class.Select(q => new { q.ClassId, q.ClassName }),
+                //Invoices = p.Invoice.Select(q => new { q.InvoiceId, q.RegisterInGroup })
+
+            }).First();
 
             if (result == null)
             {

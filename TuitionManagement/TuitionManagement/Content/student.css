@@ -4,6 +4,18 @@
      border-collapse:separate;
     border-spacing:0 5px;
 }
+
+#form-table .readOnly{
+    background-color:lightyellow;
+}
+
 #StudentList tr:hover{
     cursor:pointer;
 }
+
+#StudentList tbody tr.highlight td { 
+    background-color: darkgray;
+}
+
+
+

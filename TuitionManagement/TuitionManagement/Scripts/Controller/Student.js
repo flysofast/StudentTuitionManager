@@ -1,6 +1,6 @@
 ﻿//------------------------DATA PROCESS FUNCTIONS--------------------------------
 
-function FindStudentByID(studentID,callback) {
+function FindStudentByID(studentID, callback) {
     console.log("FIND ID" + studentID);
 
     $.ajax({
@@ -60,7 +60,7 @@ function LoadTableData() {
             $.each(result, function (index) {
                 var myDate = new Date(parseInt(result[index]['Birthday'].replace('/Date(', '')));
 
-                html += '<tr studentid='+result[index]['StudentId']+'>';
+                html += '<tr studentid=' + result[index]['StudentId'] + '>';
                 html += '<td class="StudentCodeCell">' + result[index]['StudentCode'] + '</td>';
                 html += '<td>' + result[index]['StudentName'] + '</td>';
                 html += '<td>' + myDate.ddmmyyyy() + '</td>';
@@ -74,14 +74,52 @@ function LoadTableData() {
                 var ID = $(this).attr('studentid');
                 console.log("FINDID: " + ID);
                 FindStudentByID(ID, populateInfoForm);
-              
+
             });
+            populateClassInfo();
+
         }
     });
 }
 
-
 //------------------------------UTILITIES--------------------------------
+
+function populateClassInfo() {
+    $.ajax({
+        url: 'GetClassesInfoAPI',
+        contentType: "application/json; charset=utf-8",
+        dataType: 'json',
+        type: 'POST',
+        error: function () {
+            swal("Action failed", "Couldn't load data", "error");
+        },
+        success: function (result) {
+            //console.log(result);
+            $('#opClassType').html('');
+
+            $.each(result, function (index, item) {
+                $('#opClassType').append('<option  value=' + item.ClassTypeID + '>' + item.ClassType + '</option>');
+            });
+
+            $('#opClassType').change(function () {
+                console.log('----------------------');
+                var ID = $('option:selected', this).val();
+                console.log("ClassTypeID: " + ID);
+
+                $.each(result, function (i, item) {
+                    if (item.ClassTypeID == ID) {
+                        $('#opPaidTimes').html('');
+                        $.each(item.PaidTimes, function (index, item) {
+                            $('#opPaidTimes').append('<option value=' + item.PaidTime + '>' + item.PaidTime + '</option>');
+                        });
+                    }
+                });
+            });
+
+            $('#opClassType').trigger('change');
+        }
+    });
+}
 
 var populateInfoForm = function (data) {
 
@@ -97,17 +135,15 @@ var populateInfoForm = function (data) {
         $('#tbAddress').val(data['Address']);
         $('#tbPhone').val(data['Phone']);
         $('#tbEmail').val(data['Email']);
-
-        $('#opClassType').html('');
-        $.each(data['Classes'], function (index,item) {
-            $('#opClassType').append('<option classID='+item['ClassId']+' value=' + item['ClassName'] + '>' + item['ClassName'] + '</option>')
-        });
-
     }
 }
 
 $(function () {
+    $('#StudentList').on('click', 'tbody tr', function (event) {
+        $(this).addClass('highlight').siblings().removeClass('highlight');
+    });
     $("#dpBirthday").datepicker({ dateFormat: "dd/mm/yy" });
+    //$("#opRegGroup").multiselect().multiselectfilter();
     LoadTableData();
 
 });

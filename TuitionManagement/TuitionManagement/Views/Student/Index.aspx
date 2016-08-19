@@ -3,11 +3,8 @@
 <asp:Content ID="Content" ContentPlaceHolderID="Header" runat="server">
     <link href="../../Content/student.css" rel="stylesheet" />
     <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" type="text/javascript"></script>
-    <script src="../../Scripts/Controller/Student.js" type="text/javascript"></script>
-    <script>
- 
-  </script>
+<%--    <link href="../../Content/themes/jquery.multiselect.css" rel="stylesheet" />
+    <link href="../../Content/themes/jquery.multiselect.filter.css" rel="stylesheet" />--%>
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Student management
@@ -120,16 +117,16 @@
                     <tr>
                         <td>Class type (*):</td>
                         <td>
-                            <select id="opClassType" class="form-control">
+                            <select id="opClassType" class="form-control readOnly">
                                 
                             </select>
 
                         </td>
                     </tr>
                     <tr>
-                        <td>Paid count (*):</td>
+                        <td>Paid times (*):</td>
                         <td>
-                            <select class="form-control">
+                            <select id="opPaidTimes" class="form-control readOnly">
                                 <option value="volvo">Volvo</option>
                                 <option value="saab">Saab</option>
                                 <option value="mercedes">Mercedes</option>
@@ -141,11 +138,10 @@
                     <tr>
                         <td>Register group (*):</td>
                         <td>
-                            <select class="form-control">
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="mercedes">Mercedes</option>
-                                <option value="audi">Audi</option>
+                            <select id="opRegGroup" class="form-control readOnly">
+                                <option value="1">1</option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
                             </select>
 
                         </td>
@@ -170,6 +166,11 @@
         </div>
 
     </div>
+
+     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" type="text/javascript"></script>
+ <%--   <script src="../../Scripts/jquery.multiselect.min.js"></script>
+    <script src="../../Scripts/jquery.multiselect.filter.min.js"></script>--%>
+    <script src="../../Scripts/Controller/Student.js" type="text/javascript"></script>
 
 </asp:Content>
 

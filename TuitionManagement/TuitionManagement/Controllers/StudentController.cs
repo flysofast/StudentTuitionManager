@@ -30,14 +30,37 @@ namespace TuitionManagement.Controllers
             return Json(db.Student.Select(p => new { p.StudentId, p.StudentCode, p.StudentName, p.Birthday }).ToList(), JsonRequestBehavior.AllowGet);
         }
 
-        //public JsonResult GetClassesInfo()
-        //{
-        //    var result=db.
-        //}
+        public JsonResult GetClassesInfoAPI()
+        {
+            var result = db.Object.Select(p => new
+            {
+                ClassTypeID=p.ObjectId,
+                ClassType=p.ObjectName,
+                p.Class,
+                PaidTimes = p.FeeLevel.Select(fl => new
+                {
+                    fl.PaidTime
+                }),
+
+            }).Where(p => p.Class.Equals("class_type")).ToList();
+
+            if (result == null)
+            {
+                return Json(0, JsonRequestBehavior.AllowGet);
+
+            }
+            else
+            {
+                return Json(result, JsonRequestBehavior.AllowGet);
+
+            }
+
+        }
+
 
         public JsonResult FindStudentByIDAPI(int id)
         {
-            var result = db.vwInvoice.Where(p => p.StudentId == id).Select(p => new
+            var result = db.Student.Where(p => p.StudentId == id).Select(p => new
             {
                 p.StudentId,
                 p.StudentName,
@@ -50,7 +73,7 @@ namespace TuitionManagement.Controllers
                 //Classes = p.Class.Select(q => new { q.ClassId, q.ClassName }),
                 //Invoices = p.Invoice.Select(q => new { q.InvoiceId, q.RegisterInGroup })
 
-            }).First();
+            }).FirstOrDefault();
 
             if (result == null)
             {

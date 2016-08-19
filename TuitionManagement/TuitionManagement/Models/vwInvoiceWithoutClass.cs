@@ -33,6 +33,5 @@ namespace TuitionManagement.Models
         public System.DateTime FeeDate { get; set; }
         public Nullable<int> OverDay { get; set; }
         public string Notes { get; set; }
-        public int ClassID { get; set; }
     }
 }

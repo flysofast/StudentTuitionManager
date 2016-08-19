@@ -4,13 +4,169 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FeeManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="FeeManagementModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="FeeManagementModelStoreContainer">
+          <EntitySet Name="Class" EntityType="FeeManagementModel.Store.Class" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FeeAccount" EntityType="FeeManagementModel.Store.FeeAccount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FeeLevel" EntityType="FeeManagementModel.Store.FeeLevel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Function" EntityType="FeeManagementModel.Store.Function" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Invoice" EntityType="FeeManagementModel.Store.Invoice" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Object" EntityType="FeeManagementModel.Store.Object" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Rate" EntityType="FeeManagementModel.Store.Rate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Receipt" EntityType="FeeManagementModel.Store.Receipt" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Role" EntityType="FeeManagementModel.Store.Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RoleFunction" EntityType="FeeManagementModel.Store.RoleFunction" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Student" EntityType="FeeManagementModel.Store.Student" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Student_Class" EntityType="FeeManagementModel.Store.Student_Class" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SubInvoice" EntityType="FeeManagementModel.Store.SubInvoice" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="FeeManagementModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="vwActivation" EntityType="FeeManagementModel.Store.vwActivation" store:Type="Views" store:Schema="dbo" store:Name="vwActivation">
+            <DefiningQuery>SELECT 
+      [vwActivation].[InvoiceId] AS [InvoiceId], 
+      [vwActivation].[ActivatedDate] AS [ActivatedDate], 
+      [vwActivation].[IsActivated] AS [IsActivated], 
+      [vwActivation].[RegisterInGroup] AS [RegisterInGroup], 
+      [vwActivation].[Notes] AS [Notes], 
+      [vwActivation].[StudentId] AS [StudentId], 
+      [vwActivation].[StudentCode] AS [StudentCode], 
+      [vwActivation].[StudentName] AS [StudentName], 
+      [vwActivation].[Birthday] AS [Birthday], 
+      [vwActivation].[Address] AS [Address], 
+      [vwActivation].[Phone] AS [Phone], 
+      [vwActivation].[Email] AS [Email], 
+      [vwActivation].[Gender] AS [Gender], 
+      [vwActivation].[ClassID] AS [ClassID], 
+      [vwActivation].[ObjectId] AS [ObjectId], 
+      [vwActivation].[ObjectName] AS [ObjectName], 
+      [vwActivation].[FeeLevelId] AS [FeeLevelId], 
+      [vwActivation].[PaidTime] AS [PaidTime]
+      FROM [dbo].[vwActivation] AS [vwActivation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwInvoice" EntityType="FeeManagementModel.Store.vwInvoice" store:Type="Views" store:Schema="dbo" store:Name="vwInvoice">
+            <DefiningQuery>SELECT 
+      [vwInvoice].[InvoiceId] AS [InvoiceId], 
+      [vwInvoice].[ActivatedDate] AS [ActivatedDate], 
+      [vwInvoice].[StudentId] AS [StudentId], 
+      [vwInvoice].[StudentCode] AS [StudentCode], 
+      [vwInvoice].[StudentName] AS [StudentName], 
+      [vwInvoice].[Gender] AS [Gender], 
+      [vwInvoice].[Birthday] AS [Birthday], 
+      [vwInvoice].[Address] AS [Address], 
+      [vwInvoice].[Phone] AS [Phone], 
+      [vwInvoice].[Email] AS [Email], 
+      [vwInvoice].[ClassId] AS [ClassId], 
+      [vwInvoice].[ClassName] AS [ClassName], 
+      [vwInvoice].[DateStart] AS [DateStart], 
+      [vwInvoice].[Shift] AS [Shift], 
+      [vwInvoice].[FeeLevelId] AS [FeeLevelId], 
+      [vwInvoice].[TotalMoney] AS [TotalMoney], 
+      [vwInvoice].[PaidTime] AS [PaidTime], 
+      [vwInvoice].[TimeOfPayment] AS [TimeOfPayment], 
+      [vwInvoice].[Money] AS [Money], 
+      [vwInvoice].[IsPaid] AS [IsPaid], 
+      [vwInvoice].[FeeDate] AS [FeeDate], 
+      [vwInvoice].[OverDay] AS [OverDay], 
+      [vwInvoice].[Notes] AS [Notes]
+      FROM [dbo].[vwInvoice] AS [vwInvoice]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwInvoiceWithoutClass" EntityType="FeeManagementModel.Store.vwInvoiceWithoutClass" store:Type="Views" store:Schema="dbo" store:Name="vwInvoiceWithoutClass">
+            <DefiningQuery>SELECT 
+      [vwInvoiceWithoutClass].[InvoiceId] AS [InvoiceId], 
+      [vwInvoiceWithoutClass].[ActivatedDate] AS [ActivatedDate], 
+      [vwInvoiceWithoutClass].[StudentId] AS [StudentId], 
+      [vwInvoiceWithoutClass].[StudentCode] AS [StudentCode], 
+      [vwInvoiceWithoutClass].[StudentName] AS [StudentName], 
+      [vwInvoiceWithoutClass].[Gender] AS [Gender], 
+      [vwInvoiceWithoutClass].[Birthday] AS [Birthday], 
+      [vwInvoiceWithoutClass].[Address] AS [Address], 
+      [vwInvoiceWithoutClass].[Phone] AS [Phone], 
+      [vwInvoiceWithoutClass].[Email] AS [Email], 
+      [vwInvoiceWithoutClass].[FeeLevelId] AS [FeeLevelId], 
+      [vwInvoiceWithoutClass].[TotalMoney] AS [TotalMoney], 
+      [vwInvoiceWithoutClass].[PaidTime] AS [PaidTime], 
+      [vwInvoiceWithoutClass].[TimeOfPayment] AS [TimeOfPayment], 
+      [vwInvoiceWithoutClass].[Money] AS [Money], 
+      [vwInvoiceWithoutClass].[IsPaid] AS [IsPaid], 
+      [vwInvoiceWithoutClass].[FeeDate] AS [FeeDate], 
+      [vwInvoiceWithoutClass].[OverDay] AS [OverDay], 
+      [vwInvoiceWithoutClass].[Notes] AS [Notes]
+      FROM [dbo].[vwInvoiceWithoutClass] AS [vwInvoiceWithoutClass]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwReceipt" EntityType="FeeManagementModel.Store.vwReceipt" store:Type="Views" store:Schema="dbo" store:Name="vwReceipt">
+            <DefiningQuery>SELECT 
+      [vwReceipt].[InvoiceId] AS [InvoiceId], 
+      [vwReceipt].[StudentId] AS [StudentId], 
+      [vwReceipt].[StudentCode] AS [StudentCode], 
+      [vwReceipt].[StudentName] AS [StudentName], 
+      [vwReceipt].[PaidAmount] AS [PaidAmount], 
+      [vwReceipt].[TotalMoney] AS [TotalMoney], 
+      [vwReceipt].[FeeDate] AS [FeeDate], 
+      [vwReceipt].[ObjectId] AS [ObjectId], 
+      [vwReceipt].[ObjectName] AS [ObjectName], 
+      [vwReceipt].[Class] AS [Class], 
+      [vwReceipt].[PaidTime] AS [PaidTime], 
+      [vwReceipt].[Notes] AS [Notes]
+      FROM [dbo].[vwReceipt] AS [vwReceipt]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Class_ClassType" Association="FeeManagementModel.Store.FK_Class_ClassType">
+            <End Role="Object" EntitySet="Object" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeeAccount_Role" Association="FeeManagementModel.Store.FK_FeeAccount_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="FeeAccount" EntitySet="FeeAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeeLevel_Object" Association="FeeManagementModel.Store.FK_FeeLevel_Object">
+            <End Role="Object" EntitySet="Object" />
+            <End Role="FeeLevel" EntitySet="FeeLevel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_FeeLevel" Association="FeeManagementModel.Store.FK_Invoice_FeeLevel">
+            <End Role="FeeLevel" EntitySet="FeeLevel" />
+            <End Role="Invoice" EntitySet="Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Student" Association="FeeManagementModel.Store.FK_Invoice_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Invoice" EntitySet="Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Invoice" Association="FeeManagementModel.Store.FK_Order_Invoice">
+            <End Role="Invoice" EntitySet="Invoice" />
+            <End Role="SubInvoice" EntitySet="SubInvoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receipt_Invoice1" Association="FeeManagementModel.Store.FK_Receipt_Invoice1">
+            <End Role="Invoice" EntitySet="Invoice" />
+            <End Role="Receipt" EntitySet="Receipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleFunction_Function1" Association="FeeManagementModel.Store.FK_RoleFunction_Function1">
+            <End Role="Function" EntitySet="Function" />
+            <End Role="RoleFunction" EntitySet="RoleFunction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleFunction_Role1" Association="FeeManagementModel.Store.FK_RoleFunction_Role1">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="RoleFunction" EntitySet="RoleFunction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Class_Class" Association="FeeManagementModel.Store.FK_Student_Class_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Student_Class" EntitySet="Student_Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Class_Student" Association="FeeManagementModel.Store.FK_Student_Class_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Student_Class" EntitySet="Student_Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubOrder_FeeLevel" Association="FeeManagementModel.Store.FK_SubOrder_FeeLevel">
+            <End Role="FeeLevel" EntitySet="FeeLevel" />
+            <End Role="Receipt" EntitySet="Receipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubOrder_Rate" Association="FeeManagementModel.Store.FK_SubOrder_Rate">
+            <End Role="Rate" EntitySet="Rate" />
+            <End Role="Receipt" EntitySet="Receipt" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Class">
           <Key>
             <PropertyRef Name="ClassId" />
           </Key>
-          <Property Name="ClassId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ClassName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClassId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClassName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="DateStart" Type="datetime" Nullable="false" />
           <Property Name="DateEnd" Type="datetime" Nullable="false" />
           <Property Name="ClassTypeId" Type="int" Nullable="false" />
@@ -21,17 +177,17 @@
           <Key>
             <PropertyRef Name="AccountId" />
           </Key>
-          <Property Name="AccountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="RoleId" Type="int" Nullable="false" />
-          <Property Name="Username" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="IsDelete" Type="bit" />
         </EntityType>
         <EntityType Name="FeeLevel">
           <Key>
             <PropertyRef Name="FeeLevelId" />
           </Key>
-          <Property Name="FeeLevelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FeeLevelId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="PaidTime" Type="int" Nullable="false" />
           <Property Name="TotalMoney" Type="float" Nullable="false" />
           <Property Name="Period" Type="int" Nullable="false" />
@@ -41,15 +197,15 @@
           <Key>
             <PropertyRef Name="FunctionId" />
           </Key>
-          <Property Name="FunctionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FunctionName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FunctionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FunctionName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Description" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Invoice">
           <Key>
             <PropertyRef Name="InvoiceId" />
           </Key>
-          <Property Name="InvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="StudentId" Type="int" Nullable="false" />
           <Property Name="ClassID" Type="int" Nullable="false" />
           <Property Name="ClassTypeID" Type="int" Nullable="false" />
@@ -63,8 +219,8 @@
           <Key>
             <PropertyRef Name="ObjectId" />
           </Key>
-          <Property Name="ObjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ObjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ObjectId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ObjectName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Class" Type="nvarchar" MaxLength="50" />
           <Property Name="Notes" Type="nvarchar" MaxLength="128" />
         </EntityType>
@@ -72,7 +228,7 @@
           <Key>
             <PropertyRef Name="RateId" />
           </Key>
-          <Property Name="RateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RateId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="USDRate" Type="float" Nullable="false" />
           <Property Name="VNDRate" Type="float" Nullable="false" />
           <Property Name="RateDate" Type="datetime" Nullable="false" />
@@ -81,7 +237,7 @@
           <Key>
             <PropertyRef Name="ReceiptID" />
           </Key>
-          <Property Name="ReceiptID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReceiptID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="InvoiceID" Type="int" Nullable="false" />
           <Property Name="FeeLevelId" Type="int" Nullable="false" />
           <Property Name="FeeObjectId" Type="int" />
@@ -94,8 +250,8 @@
           <Key>
             <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="IsDelete" Type="bit" />
         </EntityType>
         <EntityType Name="RoleFunction">
@@ -111,11 +267,11 @@
           <Key>
             <PropertyRef Name="StudentId" />
           </Key>
-          <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="StudentCode" Type="nvarchar" MaxLength="20" />
-          <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Birthday" Type="datetime" Nullable="false" />
-          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Phone" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Gender" Type="bit" Nullable="false" />
@@ -132,7 +288,7 @@
           <Key>
             <PropertyRef Name="SubInvoiceId" />
           </Key>
-          <Property Name="SubInvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubInvoiceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="InvoiceId" Type="int" Nullable="false" />
           <Property Name="Money" Type="float" Nullable="false" />
           <Property Name="FeeDate" Type="datetime" Nullable="false" />
@@ -143,14 +299,15 @@
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'FeeManagement.dbo.vwActivation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+      warning 6002: The table/view 'FeeManagement.dbo.vwActivation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
         <EntityType Name="vwActivation">
           <Key>
             <PropertyRef Name="InvoiceId" />
@@ -176,20 +333,21 @@ warning 6002: The table/view 'FeeManagement.dbo.vwActivation' does not have a pr
           <Property Name="Notes" Type="nvarchar" MaxLength="128" />
           <Property Name="StudentId" Type="int" Nullable="false" />
           <Property Name="StudentCode" Type="nvarchar" MaxLength="20" />
-          <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Birthday" Type="datetime" Nullable="false" />
-          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Gender" Type="bit" Nullable="false" />
           <Property Name="ClassID" Type="int" Nullable="false" />
           <Property Name="ObjectId" Type="int" Nullable="false" />
-          <Property Name="ObjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ObjectName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="FeeLevelId" Type="int" Nullable="false" />
           <Property Name="PaidTime" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'FeeManagement.dbo.vwInvoice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+      warning 6002: The table/view 'FeeManagement.dbo.vwInvoice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
         <EntityType Name="vwInvoice">
           <Key>
             <PropertyRef Name="InvoiceId" />
@@ -215,14 +373,14 @@ warning 6002: The table/view 'FeeManagement.dbo.vwInvoice' does not have a prima
           <Property Name="ActivatedDate" Type="datetime" Nullable="false" />
           <Property Name="StudentId" Type="int" Nullable="false" />
           <Property Name="StudentCode" Type="nvarchar" MaxLength="20" />
-          <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Gender" Type="bit" Nullable="false" />
           <Property Name="Birthday" Type="datetime" Nullable="false" />
-          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="ClassId" Type="int" Nullable="false" />
-          <Property Name="ClassName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClassName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="DateStart" Type="datetime" Nullable="false" />
           <Property Name="Shift" Type="nvarchar" MaxLength="50" />
           <Property Name="FeeLevelId" Type="int" Nullable="false" />
@@ -236,7 +394,8 @@ warning 6002: The table/view 'FeeManagement.dbo.vwInvoice' does not have a prima
           <Property Name="Notes" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'FeeManagement.dbo.vwInvoiceWithoutClass' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+      warning 6002: The table/view 'FeeManagement.dbo.vwInvoiceWithoutClass' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
         <EntityType Name="vwInvoiceWithoutClass">
           <Key>
             <PropertyRef Name="InvoiceId" />
@@ -254,18 +413,17 @@ warning 6002: The table/view 'FeeManagement.dbo.vwInvoiceWithoutClass' does not 
             <PropertyRef Name="Money" />
             <PropertyRef Name="IsPaid" />
             <PropertyRef Name="FeeDate" />
-            <PropertyRef Name="ClassID" />
           </Key>
           <Property Name="InvoiceId" Type="int" Nullable="false" />
           <Property Name="ActivatedDate" Type="datetime" Nullable="false" />
           <Property Name="StudentId" Type="int" Nullable="false" />
           <Property Name="StudentCode" Type="nvarchar" MaxLength="20" />
-          <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Gender" Type="bit" Nullable="false" />
           <Property Name="Birthday" Type="datetime" Nullable="false" />
-          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="FeeLevelId" Type="int" Nullable="false" />
           <Property Name="TotalMoney" Type="float" Nullable="false" />
           <Property Name="PaidTime" Type="int" Nullable="false" />
@@ -275,10 +433,10 @@ warning 6002: The table/view 'FeeManagement.dbo.vwInvoiceWithoutClass' does not 
           <Property Name="FeeDate" Type="datetime" Nullable="false" />
           <Property Name="OverDay" Type="int" />
           <Property Name="Notes" Type="nvarchar" MaxLength="128" />
-          <Property Name="ClassID" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+      warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
         <EntityType Name="vwReceipt">
           <Key>
             <PropertyRef Name="InvoiceId" />
@@ -294,21 +452,21 @@ warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a prima
           <Property Name="InvoiceId" Type="int" Nullable="false" />
           <Property Name="StudentId" Type="int" Nullable="false" />
           <Property Name="StudentCode" Type="nvarchar" MaxLength="20" />
-          <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="PaidAmount" Type="float" Nullable="false" />
           <Property Name="TotalMoney" Type="float" Nullable="false" />
           <Property Name="FeeDate" Type="datetime" Nullable="false" />
           <Property Name="ObjectId" Type="int" Nullable="false" />
-          <Property Name="ObjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ObjectName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Class" Type="nvarchar" MaxLength="50" />
           <Property Name="PaidTime" Type="int" Nullable="false" />
           <Property Name="Notes" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <Association Name="FK_Class_ClassType">
-          <End Role="Object" Type="Self.Object" Multiplicity="1">
+          <End Role="Object" Type="FeeManagementModel.Store.Object" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <End Role="Class" Type="FeeManagementModel.Store.Class" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Object">
               <PropertyRef Name="ObjectId" />
@@ -319,10 +477,10 @@ warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FeeAccount_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="1">
+          <End Role="Role" Type="FeeManagementModel.Store.Role" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="FeeAccount" Type="Self.FeeAccount" Multiplicity="*" />
+          <End Role="FeeAccount" Type="FeeManagementModel.Store.FeeAccount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="RoleId" />
@@ -333,8 +491,8 @@ warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FeeLevel_Object">
-          <End Role="Object" Type="Self.Object" Multiplicity="1" />
-          <End Role="FeeLevel" Type="Self.FeeLevel" Multiplicity="*" />
+          <End Role="Object" Type="FeeManagementModel.Store.Object" Multiplicity="1" />
+          <End Role="FeeLevel" Type="FeeManagementModel.Store.FeeLevel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Object">
               <PropertyRef Name="ObjectId" />
@@ -345,8 +503,8 @@ warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Invoice_FeeLevel">
-          <End Role="FeeLevel" Type="Self.FeeLevel" Multiplicity="1" />
-          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <End Role="FeeLevel" Type="FeeManagementModel.Store.FeeLevel" Multiplicity="1" />
+          <End Role="Invoice" Type="FeeManagementModel.Store.Invoice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FeeLevel">
               <PropertyRef Name="FeeLevelId" />
@@ -357,10 +515,10 @@ warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Invoice_Student">
-          <End Role="Student" Type="Self.Student" Multiplicity="1">
+          <End Role="Student" Type="FeeManagementModel.Store.Student" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <End Role="Invoice" Type="FeeManagementModel.Store.Invoice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
               <PropertyRef Name="StudentId" />
@@ -371,10 +529,10 @@ warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Invoice">
-          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1">
+          <End Role="Invoice" Type="FeeManagementModel.Store.Invoice" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="SubInvoice" Type="Self.SubInvoice" Multiplicity="*" />
+          <End Role="SubInvoice" Type="FeeManagementModel.Store.SubInvoice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Invoice">
               <PropertyRef Name="InvoiceId" />
@@ -385,10 +543,10 @@ warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Receipt_Invoice1">
-          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1">
+          <End Role="Invoice" Type="FeeManagementModel.Store.Invoice" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+          <End Role="Receipt" Type="FeeManagementModel.Store.Receipt" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Invoice">
               <PropertyRef Name="InvoiceId" />
@@ -399,8 +557,8 @@ warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RoleFunction_Function1">
-          <End Role="Function" Type="Self.Function" Multiplicity="1" />
-          <End Role="RoleFunction" Type="Self.RoleFunction" Multiplicity="*" />
+          <End Role="Function" Type="FeeManagementModel.Store.Function" Multiplicity="1" />
+          <End Role="RoleFunction" Type="FeeManagementModel.Store.RoleFunction" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Function">
               <PropertyRef Name="FunctionId" />
@@ -411,8 +569,8 @@ warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RoleFunction_Role1">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
-          <End Role="RoleFunction" Type="Self.RoleFunction" Multiplicity="*" />
+          <End Role="Role" Type="FeeManagementModel.Store.Role" Multiplicity="1" />
+          <End Role="RoleFunction" Type="FeeManagementModel.Store.RoleFunction" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="RoleId" />
@@ -423,10 +581,10 @@ warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Student_Class_Class">
-          <End Role="Class" Type="Self.Class" Multiplicity="1">
+          <End Role="Class" Type="FeeManagementModel.Store.Class" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Student_Class" Type="Self.Student_Class" Multiplicity="*" />
+          <End Role="Student_Class" Type="FeeManagementModel.Store.Student_Class" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Class">
               <PropertyRef Name="ClassId" />
@@ -437,10 +595,10 @@ warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Student_Class_Student">
-          <End Role="Student" Type="Self.Student" Multiplicity="1">
+          <End Role="Student" Type="FeeManagementModel.Store.Student" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Student_Class" Type="Self.Student_Class" Multiplicity="*" />
+          <End Role="Student_Class" Type="FeeManagementModel.Store.Student_Class" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
               <PropertyRef Name="StudentId" />
@@ -451,8 +609,8 @@ warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SubOrder_FeeLevel">
-          <End Role="FeeLevel" Type="Self.FeeLevel" Multiplicity="1" />
-          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+          <End Role="FeeLevel" Type="FeeManagementModel.Store.FeeLevel" Multiplicity="1" />
+          <End Role="Receipt" Type="FeeManagementModel.Store.Receipt" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FeeLevel">
               <PropertyRef Name="FeeLevelId" />
@@ -463,8 +621,8 @@ warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a prima
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SubOrder_Rate">
-          <End Role="Rate" Type="Self.Rate" Multiplicity="1" />
-          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+          <End Role="Rate" Type="FeeManagementModel.Store.Rate" Multiplicity="1" />
+          <End Role="Receipt" Type="FeeManagementModel.Store.Receipt" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rate">
               <PropertyRef Name="RateId" />
@@ -477,16 +635,22 @@ warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a prima
         <Function Name="createViewActivation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="createViewReceipt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="doStatistics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="genSubInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="invoiceId" Type="int" Mode="In" />
           <Parameter Name="activatedDate" Type="datetime" Mode="In" />
           <Parameter Name="group" Type="int" Mode="In" />
         </Function>
-        <Function Name="GetTimeOfPayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+        <Function Name="GetFunctionID" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetRoleID" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="roleName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetTimeOfPayment" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="invoiceID" Type="int" Mode="In" />
         </Function>
-        <Function Name="GetTotalFeeByInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+        <Function Name="GetTotalFeeByInvoice" ReturnType="float" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="invoiceID" Type="int" Mode="In" />
           <Parameter Name="classTypeID" Type="int" Mode="In" />
         </Function>
@@ -525,684 +689,74 @@ warning 6002: The table/view 'FeeManagement.dbo.vwReceipt' does not have a prima
           <Parameter Name="activatedDate" Type="datetime" Mode="In" />
           <Parameter Name="currentDate" Type="datetime" Mode="In" />
         </Function>
-        <EntityContainer Name="FeeManagementModelStoreContainer">
-          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FeeAccount" EntityType="Self.FeeAccount" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FeeLevel" EntityType="Self.FeeLevel" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Function" EntityType="Self.Function" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Object" EntityType="Self.Object" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Receipt" EntityType="Self.Receipt" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RoleFunction" EntityType="Self.RoleFunction" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Student_Class" EntityType="Self.Student_Class" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SubInvoice" EntityType="Self.SubInvoice" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="vwActivation" EntityType="Self.vwActivation" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[vwActivation].[InvoiceId] AS [InvoiceId], 
-[vwActivation].[ActivatedDate] AS [ActivatedDate], 
-[vwActivation].[IsActivated] AS [IsActivated], 
-[vwActivation].[RegisterInGroup] AS [RegisterInGroup], 
-[vwActivation].[Notes] AS [Notes], 
-[vwActivation].[StudentId] AS [StudentId], 
-[vwActivation].[StudentCode] AS [StudentCode], 
-[vwActivation].[StudentName] AS [StudentName], 
-[vwActivation].[Birthday] AS [Birthday], 
-[vwActivation].[Address] AS [Address], 
-[vwActivation].[Phone] AS [Phone], 
-[vwActivation].[Email] AS [Email], 
-[vwActivation].[Gender] AS [Gender], 
-[vwActivation].[ClassID] AS [ClassID], 
-[vwActivation].[ObjectId] AS [ObjectId], 
-[vwActivation].[ObjectName] AS [ObjectName], 
-[vwActivation].[FeeLevelId] AS [FeeLevelId], 
-[vwActivation].[PaidTime] AS [PaidTime]
-FROM [dbo].[vwActivation] AS [vwActivation]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vwInvoice" EntityType="Self.vwInvoice" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[vwInvoice].[InvoiceId] AS [InvoiceId], 
-[vwInvoice].[ActivatedDate] AS [ActivatedDate], 
-[vwInvoice].[StudentId] AS [StudentId], 
-[vwInvoice].[StudentCode] AS [StudentCode], 
-[vwInvoice].[StudentName] AS [StudentName], 
-[vwInvoice].[Gender] AS [Gender], 
-[vwInvoice].[Birthday] AS [Birthday], 
-[vwInvoice].[Address] AS [Address], 
-[vwInvoice].[Phone] AS [Phone], 
-[vwInvoice].[Email] AS [Email], 
-[vwInvoice].[ClassId] AS [ClassId], 
-[vwInvoice].[ClassName] AS [ClassName], 
-[vwInvoice].[DateStart] AS [DateStart], 
-[vwInvoice].[Shift] AS [Shift], 
-[vwInvoice].[FeeLevelId] AS [FeeLevelId], 
-[vwInvoice].[TotalMoney] AS [TotalMoney], 
-[vwInvoice].[PaidTime] AS [PaidTime], 
-[vwInvoice].[TimeOfPayment] AS [TimeOfPayment], 
-[vwInvoice].[Money] AS [Money], 
-[vwInvoice].[IsPaid] AS [IsPaid], 
-[vwInvoice].[FeeDate] AS [FeeDate], 
-[vwInvoice].[OverDay] AS [OverDay], 
-[vwInvoice].[Notes] AS [Notes]
-FROM [dbo].[vwInvoice] AS [vwInvoice]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vwInvoiceWithoutClass" EntityType="Self.vwInvoiceWithoutClass" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[vwInvoiceWithoutClass].[InvoiceId] AS [InvoiceId], 
-[vwInvoiceWithoutClass].[ActivatedDate] AS [ActivatedDate], 
-[vwInvoiceWithoutClass].[StudentId] AS [StudentId], 
-[vwInvoiceWithoutClass].[StudentCode] AS [StudentCode], 
-[vwInvoiceWithoutClass].[StudentName] AS [StudentName], 
-[vwInvoiceWithoutClass].[Gender] AS [Gender], 
-[vwInvoiceWithoutClass].[Birthday] AS [Birthday], 
-[vwInvoiceWithoutClass].[Address] AS [Address], 
-[vwInvoiceWithoutClass].[Phone] AS [Phone], 
-[vwInvoiceWithoutClass].[Email] AS [Email], 
-[vwInvoiceWithoutClass].[FeeLevelId] AS [FeeLevelId], 
-[vwInvoiceWithoutClass].[TotalMoney] AS [TotalMoney], 
-[vwInvoiceWithoutClass].[PaidTime] AS [PaidTime], 
-[vwInvoiceWithoutClass].[TimeOfPayment] AS [TimeOfPayment], 
-[vwInvoiceWithoutClass].[Money] AS [Money], 
-[vwInvoiceWithoutClass].[IsPaid] AS [IsPaid], 
-[vwInvoiceWithoutClass].[FeeDate] AS [FeeDate], 
-[vwInvoiceWithoutClass].[OverDay] AS [OverDay], 
-[vwInvoiceWithoutClass].[Notes] AS [Notes], 
-[vwInvoiceWithoutClass].[ClassID] AS [ClassID]
-FROM [dbo].[vwInvoiceWithoutClass] AS [vwInvoiceWithoutClass]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vwReceipt" EntityType="Self.vwReceipt" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[vwReceipt].[InvoiceId] AS [InvoiceId], 
-[vwReceipt].[StudentId] AS [StudentId], 
-[vwReceipt].[StudentCode] AS [StudentCode], 
-[vwReceipt].[StudentName] AS [StudentName], 
-[vwReceipt].[PaidAmount] AS [PaidAmount], 
-[vwReceipt].[TotalMoney] AS [TotalMoney], 
-[vwReceipt].[FeeDate] AS [FeeDate], 
-[vwReceipt].[ObjectId] AS [ObjectId], 
-[vwReceipt].[ObjectName] AS [ObjectName], 
-[vwReceipt].[Class] AS [Class], 
-[vwReceipt].[PaidTime] AS [PaidTime], 
-[vwReceipt].[Notes] AS [Notes]
-FROM [dbo].[vwReceipt] AS [vwReceipt]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK_Class_ClassType" Association="Self.FK_Class_ClassType">
-            <End Role="Object" EntitySet="Object" />
-            <End Role="Class" EntitySet="Class" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FeeAccount_Role" Association="Self.FK_FeeAccount_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="FeeAccount" EntitySet="FeeAccount" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FeeLevel_Object" Association="Self.FK_FeeLevel_Object">
-            <End Role="Object" EntitySet="Object" />
-            <End Role="FeeLevel" EntitySet="FeeLevel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Invoice_FeeLevel" Association="Self.FK_Invoice_FeeLevel">
-            <End Role="FeeLevel" EntitySet="FeeLevel" />
-            <End Role="Invoice" EntitySet="Invoice" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Invoice_Student" Association="Self.FK_Invoice_Student">
-            <End Role="Student" EntitySet="Student" />
-            <End Role="Invoice" EntitySet="Invoice" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Invoice" Association="Self.FK_Order_Invoice">
-            <End Role="Invoice" EntitySet="Invoice" />
-            <End Role="SubInvoice" EntitySet="SubInvoice" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Receipt_Invoice1" Association="Self.FK_Receipt_Invoice1">
-            <End Role="Invoice" EntitySet="Invoice" />
-            <End Role="Receipt" EntitySet="Receipt" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RoleFunction_Function1" Association="Self.FK_RoleFunction_Function1">
-            <End Role="Function" EntitySet="Function" />
-            <End Role="RoleFunction" EntitySet="RoleFunction" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RoleFunction_Role1" Association="Self.FK_RoleFunction_Role1">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="RoleFunction" EntitySet="RoleFunction" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Student_Class_Class" Association="Self.FK_Student_Class_Class">
-            <End Role="Class" EntitySet="Class" />
-            <End Role="Student_Class" EntitySet="Student_Class" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Student_Class_Student" Association="Self.FK_Student_Class_Student">
-            <End Role="Student" EntitySet="Student" />
-            <End Role="Student_Class" EntitySet="Student_Class" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SubOrder_FeeLevel" Association="Self.FK_SubOrder_FeeLevel">
-            <End Role="FeeLevel" EntitySet="FeeLevel" />
-            <End Role="Receipt" EntitySet="Receipt" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SubOrder_Rate" Association="Self.FK_SubOrder_Rate">
-            <End Role="Rate" EntitySet="Rate" />
-            <End Role="Receipt" EntitySet="Receipt" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="FeeManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Class">
-          <Key>
-            <PropertyRef Name="ClassId" />
-          </Key>
-          <Property Name="ClassId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ClassName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ClassTypeId" Type="Int32" Nullable="false" />
-          <Property Name="Shift" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsEnded" Type="Boolean" />
-          <NavigationProperty Name="Object" Relationship="Self.FK_Class_ClassType" FromRole="Class" ToRole="Object" />
-          <NavigationProperty Name="Student" Relationship="Self.Student_Class" FromRole="Class" ToRole="Student" />
-        </EntityType>
-        <EntityType Name="FeeAccount">
-          <Key>
-            <PropertyRef Name="AccountId" />
-          </Key>
-          <Property Name="AccountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
-          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsDelete" Type="Boolean" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_FeeAccount_Role" FromRole="FeeAccount" ToRole="Role" />
-        </EntityType>
-        <EntityType Name="FeeLevel">
-          <Key>
-            <PropertyRef Name="FeeLevelId" />
-          </Key>
-          <Property Name="FeeLevelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PaidTime" Type="Int32" Nullable="false" />
-          <Property Name="TotalMoney" Type="Double" Nullable="false" />
-          <Property Name="Period" Type="Int32" Nullable="false" />
-          <Property Name="ObjectID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Object" Relationship="Self.FK_FeeLevel_Object" FromRole="FeeLevel" ToRole="Object" />
-          <NavigationProperty Name="Invoice" Relationship="Self.FK_Invoice_FeeLevel" FromRole="FeeLevel" ToRole="Invoice" />
-          <NavigationProperty Name="Receipt" Relationship="Self.FK_SubOrder_FeeLevel" FromRole="FeeLevel" ToRole="Receipt" />
-        </EntityType>
-        <EntityType Name="Function">
-          <Key>
-            <PropertyRef Name="FunctionId" />
-          </Key>
-          <Property Name="FunctionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FunctionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="RoleFunction" Relationship="Self.FK_RoleFunction_Function1" FromRole="Function" ToRole="RoleFunction" />
-        </EntityType>
-        <EntityType Name="Invoice">
-          <Key>
-            <PropertyRef Name="InvoiceId" />
-          </Key>
-          <Property Name="InvoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StudentId" Type="Int32" Nullable="false" />
-          <Property Name="ClassID" Type="Int32" Nullable="false" />
-          <Property Name="ClassTypeID" Type="Int32" Nullable="false" />
-          <Property Name="FeeLevelId" Type="Int32" Nullable="false" />
-          <Property Name="RegisterInGroup" Type="Int32" Nullable="false" />
-          <Property Name="ActivatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Notes" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="IsActivated" Type="Boolean" />
-          <NavigationProperty Name="FeeLevel" Relationship="Self.FK_Invoice_FeeLevel" FromRole="Invoice" ToRole="FeeLevel" />
-          <NavigationProperty Name="Student" Relationship="Self.FK_Invoice_Student" FromRole="Invoice" ToRole="Student" />
-          <NavigationProperty Name="SubInvoice" Relationship="Self.FK_Order_Invoice" FromRole="Invoice" ToRole="SubInvoice" />
-          <NavigationProperty Name="Receipt" Relationship="Self.FK_Receipt_Invoice1" FromRole="Invoice" ToRole="Receipt" />
-        </EntityType>
-        <EntityType Name="Object">
-          <Key>
-            <PropertyRef Name="ObjectId" />
-          </Key>
-          <Property Name="ObjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ObjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Notes" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Class1" Relationship="Self.FK_Class_ClassType" FromRole="Object" ToRole="Class" />
-          <NavigationProperty Name="FeeLevel" Relationship="Self.FK_FeeLevel_Object" FromRole="Object" ToRole="FeeLevel" />
-        </EntityType>
-        <EntityType Name="Rate">
-          <Key>
-            <PropertyRef Name="RateId" />
-          </Key>
-          <Property Name="RateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="USDRate" Type="Double" Nullable="false" />
-          <Property Name="VNDRate" Type="Double" Nullable="false" />
-          <Property Name="RateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Receipt" Relationship="Self.FK_SubOrder_Rate" FromRole="Rate" ToRole="Receipt" />
-        </EntityType>
-        <EntityType Name="Receipt">
-          <Key>
-            <PropertyRef Name="ReceiptID" />
-          </Key>
-          <Property Name="ReceiptID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="InvoiceID" Type="Int32" Nullable="false" />
-          <Property Name="FeeLevelId" Type="Int32" Nullable="false" />
-          <Property Name="FeeObjectId" Type="Int32" />
-          <Property Name="RateId" Type="Int32" Nullable="false" />
-          <Property Name="Money" Type="Double" Nullable="false" />
-          <Property Name="FeeDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="FeeLevel" Relationship="Self.FK_SubOrder_FeeLevel" FromRole="Receipt" ToRole="FeeLevel" />
-          <NavigationProperty Name="Invoice" Relationship="Self.FK_Receipt_Invoice1" FromRole="Receipt" ToRole="Invoice" />
-          <NavigationProperty Name="Rate" Relationship="Self.FK_SubOrder_Rate" FromRole="Receipt" ToRole="Rate" />
-        </EntityType>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsDelete" Type="Boolean" />
-          <NavigationProperty Name="FeeAccount" Relationship="Self.FK_FeeAccount_Role" FromRole="Role" ToRole="FeeAccount" />
-          <NavigationProperty Name="RoleFunction" Relationship="Self.FK_RoleFunction_Role1" FromRole="Role" ToRole="RoleFunction" />
-        </EntityType>
-        <EntityType Name="RoleFunction">
-          <Key>
-            <PropertyRef Name="RoleId" />
-            <PropertyRef Name="FunctionId" />
-          </Key>
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
-          <Property Name="FunctionId" Type="Int32" Nullable="false" />
-          <Property Name="IsDelete" Type="Boolean" />
-          <NavigationProperty Name="Function" Relationship="Self.FK_RoleFunction_Function1" FromRole="RoleFunction" ToRole="Function" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_RoleFunction_Role1" FromRole="RoleFunction" ToRole="Role" />
-        </EntityType>
-        <EntityType Name="Student">
-          <Key>
-            <PropertyRef Name="StudentId" />
-          </Key>
-          <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StudentCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Gender" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Invoice" Relationship="Self.FK_Invoice_Student" FromRole="Student" ToRole="Invoice" />
-          <NavigationProperty Name="Class" Relationship="Self.Student_Class" FromRole="Student" ToRole="Class" />
-        </EntityType>
-        <EntityType Name="SubInvoice">
-          <Key>
-            <PropertyRef Name="SubInvoiceId" />
-          </Key>
-          <Property Name="SubInvoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
-          <Property Name="Money" Type="Double" Nullable="false" />
-          <Property Name="FeeDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IsPaid" Type="Boolean" Nullable="false" />
-          <Property Name="Notes" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Invoice" Relationship="Self.FK_Order_Invoice" FromRole="SubInvoice" ToRole="Invoice" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="vwActivation">
-          <Key>
-            <PropertyRef Name="InvoiceId" />
-            <PropertyRef Name="ActivatedDate" />
-            <PropertyRef Name="RegisterInGroup" />
-            <PropertyRef Name="StudentId" />
-            <PropertyRef Name="StudentName" />
-            <PropertyRef Name="Birthday" />
-            <PropertyRef Name="Address" />
-            <PropertyRef Name="Phone" />
-            <PropertyRef Name="Email" />
-            <PropertyRef Name="Gender" />
-            <PropertyRef Name="ClassID" />
-            <PropertyRef Name="ObjectId" />
-            <PropertyRef Name="ObjectName" />
-            <PropertyRef Name="FeeLevelId" />
-            <PropertyRef Name="PaidTime" />
-          </Key>
-          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
-          <Property Name="ActivatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IsActivated" Type="Boolean" />
-          <Property Name="RegisterInGroup" Type="Int32" Nullable="false" />
-          <Property Name="Notes" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="StudentId" Type="Int32" Nullable="false" />
-          <Property Name="StudentCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Gender" Type="Boolean" Nullable="false" />
-          <Property Name="ClassID" Type="Int32" Nullable="false" />
-          <Property Name="ObjectId" Type="Int32" Nullable="false" />
-          <Property Name="ObjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FeeLevelId" Type="Int32" Nullable="false" />
-          <Property Name="PaidTime" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="vwInvoice">
-          <Key>
-            <PropertyRef Name="InvoiceId" />
-            <PropertyRef Name="ActivatedDate" />
-            <PropertyRef Name="StudentId" />
-            <PropertyRef Name="StudentName" />
-            <PropertyRef Name="Gender" />
-            <PropertyRef Name="Birthday" />
-            <PropertyRef Name="Address" />
-            <PropertyRef Name="Phone" />
-            <PropertyRef Name="Email" />
-            <PropertyRef Name="ClassId" />
-            <PropertyRef Name="ClassName" />
-            <PropertyRef Name="DateStart" />
-            <PropertyRef Name="FeeLevelId" />
-            <PropertyRef Name="TotalMoney" />
-            <PropertyRef Name="PaidTime" />
-            <PropertyRef Name="Money" />
-            <PropertyRef Name="IsPaid" />
-            <PropertyRef Name="FeeDate" />
-          </Key>
-          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
-          <Property Name="ActivatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="StudentId" Type="Int32" Nullable="false" />
-          <Property Name="StudentCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Gender" Type="Boolean" Nullable="false" />
-          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ClassId" Type="Int32" Nullable="false" />
-          <Property Name="ClassName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Shift" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FeeLevelId" Type="Int32" Nullable="false" />
-          <Property Name="TotalMoney" Type="Double" Nullable="false" />
-          <Property Name="PaidTime" Type="Int32" Nullable="false" />
-          <Property Name="TimeOfPayment" Type="Int32" />
-          <Property Name="Money" Type="Double" Nullable="false" />
-          <Property Name="IsPaid" Type="Boolean" Nullable="false" />
-          <Property Name="FeeDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="OverDay" Type="Int32" />
-          <Property Name="Notes" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="vwInvoiceWithoutClass">
-          <Key>
-            <PropertyRef Name="InvoiceId" />
-            <PropertyRef Name="ActivatedDate" />
-            <PropertyRef Name="StudentId" />
-            <PropertyRef Name="StudentName" />
-            <PropertyRef Name="Gender" />
-            <PropertyRef Name="Birthday" />
-            <PropertyRef Name="Address" />
-            <PropertyRef Name="Phone" />
-            <PropertyRef Name="Email" />
-            <PropertyRef Name="FeeLevelId" />
-            <PropertyRef Name="TotalMoney" />
-            <PropertyRef Name="PaidTime" />
-            <PropertyRef Name="Money" />
-            <PropertyRef Name="IsPaid" />
-            <PropertyRef Name="FeeDate" />
-            <PropertyRef Name="ClassID" />
-          </Key>
-          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
-          <Property Name="ActivatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="StudentId" Type="Int32" Nullable="false" />
-          <Property Name="StudentCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Gender" Type="Boolean" Nullable="false" />
-          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FeeLevelId" Type="Int32" Nullable="false" />
-          <Property Name="TotalMoney" Type="Double" Nullable="false" />
-          <Property Name="PaidTime" Type="Int32" Nullable="false" />
-          <Property Name="TimeOfPayment" Type="Int32" />
-          <Property Name="Money" Type="Double" Nullable="false" />
-          <Property Name="IsPaid" Type="Boolean" Nullable="false" />
-          <Property Name="FeeDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="OverDay" Type="Int32" />
-          <Property Name="Notes" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ClassID" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="vwReceipt">
-          <Key>
-            <PropertyRef Name="InvoiceId" />
-            <PropertyRef Name="StudentId" />
-            <PropertyRef Name="StudentName" />
-            <PropertyRef Name="PaidAmount" />
-            <PropertyRef Name="TotalMoney" />
-            <PropertyRef Name="FeeDate" />
-            <PropertyRef Name="ObjectId" />
-            <PropertyRef Name="ObjectName" />
-            <PropertyRef Name="PaidTime" />
-          </Key>
-          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
-          <Property Name="StudentId" Type="Int32" Nullable="false" />
-          <Property Name="StudentCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PaidAmount" Type="Double" Nullable="false" />
-          <Property Name="TotalMoney" Type="Double" Nullable="false" />
-          <Property Name="FeeDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ObjectId" Type="Int32" Nullable="false" />
-          <Property Name="ObjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PaidTime" Type="Int32" Nullable="false" />
-          <Property Name="Notes" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <Association Name="FK_Class_ClassType">
-          <End Role="Object" Type="Self.Object" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Class" Type="Self.Class" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Object">
-              <PropertyRef Name="ObjectId" />
-            </Principal>
-            <Dependent Role="Class">
-              <PropertyRef Name="ClassTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FeeAccount_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="FeeAccount" Type="Self.FeeAccount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="RoleId" />
-            </Principal>
-            <Dependent Role="FeeAccount">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FeeLevel_Object">
-          <End Role="Object" Type="Self.Object" Multiplicity="1" />
-          <End Role="FeeLevel" Type="Self.FeeLevel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Object">
-              <PropertyRef Name="ObjectId" />
-            </Principal>
-            <Dependent Role="FeeLevel">
-              <PropertyRef Name="ObjectID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Invoice_FeeLevel">
-          <End Role="FeeLevel" Type="Self.FeeLevel" Multiplicity="1" />
-          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FeeLevel">
-              <PropertyRef Name="FeeLevelId" />
-            </Principal>
-            <Dependent Role="Invoice">
-              <PropertyRef Name="FeeLevelId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SubOrder_FeeLevel">
-          <End Role="FeeLevel" Type="Self.FeeLevel" Multiplicity="1" />
-          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FeeLevel">
-              <PropertyRef Name="FeeLevelId" />
-            </Principal>
-            <Dependent Role="Receipt">
-              <PropertyRef Name="FeeLevelId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RoleFunction_Function1">
-          <End Role="Function" Type="Self.Function" Multiplicity="1" />
-          <End Role="RoleFunction" Type="Self.RoleFunction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Function">
-              <PropertyRef Name="FunctionId" />
-            </Principal>
-            <Dependent Role="RoleFunction">
-              <PropertyRef Name="FunctionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Invoice_Student">
-          <End Role="Student" Type="Self.Student" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="StudentId" />
-            </Principal>
-            <Dependent Role="Invoice">
-              <PropertyRef Name="StudentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_Invoice">
-          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="SubInvoice" Type="Self.SubInvoice" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Invoice">
-              <PropertyRef Name="InvoiceId" />
-            </Principal>
-            <Dependent Role="SubInvoice">
-              <PropertyRef Name="InvoiceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Receipt_Invoice1">
-          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Invoice">
-              <PropertyRef Name="InvoiceId" />
-            </Principal>
-            <Dependent Role="Receipt">
-              <PropertyRef Name="InvoiceID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SubOrder_Rate">
-          <End Role="Rate" Type="Self.Rate" Multiplicity="1" />
-          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rate">
-              <PropertyRef Name="RateId" />
-            </Principal>
-            <Dependent Role="Receipt">
-              <PropertyRef Name="RateId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RoleFunction_Role1">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
-          <End Role="RoleFunction" Type="Self.RoleFunction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="RoleId" />
-            </Principal>
-            <Dependent Role="RoleFunction">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Student_Class">
-          <End Role="Class" Type="Self.Class" Multiplicity="*" />
-          <End Role="Student" Type="Self.Student" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="FeeManagementEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Class" EntityType="Self.Class" />
-          <EntitySet Name="FeeAccount" EntityType="Self.FeeAccount" />
-          <EntitySet Name="FeeLevel" EntityType="Self.FeeLevel" />
-          <EntitySet Name="Function" EntityType="Self.Function" />
-          <EntitySet Name="Invoice" EntityType="Self.Invoice" />
-          <EntitySet Name="Object" EntityType="Self.Object" />
-          <EntitySet Name="Rate" EntityType="Self.Rate" />
-          <EntitySet Name="Receipt" EntityType="Self.Receipt" />
-          <EntitySet Name="Role" EntityType="Self.Role" />
-          <EntitySet Name="RoleFunction" EntityType="Self.RoleFunction" />
-          <EntitySet Name="Student" EntityType="Self.Student" />
-          <EntitySet Name="SubInvoice" EntityType="Self.SubInvoice" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="vwActivation" EntityType="Self.vwActivation" />
-          <EntitySet Name="vwInvoice" EntityType="Self.vwInvoice" />
-          <EntitySet Name="vwInvoiceWithoutClass" EntityType="Self.vwInvoiceWithoutClass" />
-          <EntitySet Name="vwReceipt" EntityType="Self.vwReceipt" />
-          <AssociationSet Name="FK_Class_ClassType" Association="Self.FK_Class_ClassType">
+      <Schema Namespace="FeeManagementModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FeeManagementEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Class" EntityType="FeeManagementModel.Class" />
+          <EntitySet Name="FeeAccount" EntityType="FeeManagementModel.FeeAccount" />
+          <EntitySet Name="FeeLevel" EntityType="FeeManagementModel.FeeLevel" />
+          <EntitySet Name="Function" EntityType="FeeManagementModel.Function" />
+          <EntitySet Name="Invoice" EntityType="FeeManagementModel.Invoice" />
+          <EntitySet Name="Object" EntityType="FeeManagementModel.Object" />
+          <EntitySet Name="Rate" EntityType="FeeManagementModel.Rate" />
+          <EntitySet Name="Receipt" EntityType="FeeManagementModel.Receipt" />
+          <EntitySet Name="Role" EntityType="FeeManagementModel.Role" />
+          <EntitySet Name="RoleFunction" EntityType="FeeManagementModel.RoleFunction" />
+          <EntitySet Name="Student" EntityType="FeeManagementModel.Student" />
+          <EntitySet Name="SubInvoice" EntityType="FeeManagementModel.SubInvoice" />
+          <EntitySet Name="sysdiagrams" EntityType="FeeManagementModel.sysdiagrams" />
+          <EntitySet Name="vwActivation" EntityType="FeeManagementModel.vwActivation" />
+          <EntitySet Name="vwInvoice" EntityType="FeeManagementModel.vwInvoice" />
+          <EntitySet Name="vwInvoiceWithoutClass" EntityType="FeeManagementModel.vwInvoiceWithoutClass" />
+          <EntitySet Name="vwReceipt" EntityType="FeeManagementModel.vwReceipt" />
+          <AssociationSet Name="FK_Class_ClassType" Association="FeeManagementModel.FK_Class_ClassType">
             <End Role="Object" EntitySet="Object" />
             <End Role="Class" EntitySet="Class" />
           </AssociationSet>
-          <AssociationSet Name="FK_FeeAccount_Role" Association="Self.FK_FeeAccount_Role">
+          <AssociationSet Name="FK_FeeAccount_Role" Association="FeeManagementModel.FK_FeeAccount_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="FeeAccount" EntitySet="FeeAccount" />
           </AssociationSet>
-          <AssociationSet Name="FK_FeeLevel_Object" Association="Self.FK_FeeLevel_Object">
+          <AssociationSet Name="FK_FeeLevel_Object" Association="FeeManagementModel.FK_FeeLevel_Object">
             <End Role="Object" EntitySet="Object" />
             <End Role="FeeLevel" EntitySet="FeeLevel" />
           </AssociationSet>
-          <AssociationSet Name="FK_Invoice_FeeLevel" Association="Self.FK_Invoice_FeeLevel">
+          <AssociationSet Name="FK_Invoice_FeeLevel" Association="FeeManagementModel.FK_Invoice_FeeLevel">
             <End Role="FeeLevel" EntitySet="FeeLevel" />
             <End Role="Invoice" EntitySet="Invoice" />
           </AssociationSet>
-          <AssociationSet Name="FK_SubOrder_FeeLevel" Association="Self.FK_SubOrder_FeeLevel">
+          <AssociationSet Name="FK_SubOrder_FeeLevel" Association="FeeManagementModel.FK_SubOrder_FeeLevel">
             <End Role="FeeLevel" EntitySet="FeeLevel" />
             <End Role="Receipt" EntitySet="Receipt" />
           </AssociationSet>
-          <AssociationSet Name="FK_RoleFunction_Function1" Association="Self.FK_RoleFunction_Function1">
+          <AssociationSet Name="FK_RoleFunction_Function1" Association="FeeManagementModel.FK_RoleFunction_Function1">
             <End Role="Function" EntitySet="Function" />
             <End Role="RoleFunction" EntitySet="RoleFunction" />
           </AssociationSet>
-          <AssociationSet Name="FK_Invoice_Student" Association="Self.FK_Invoice_Student">
+          <AssociationSet Name="FK_Invoice_Student" Association="FeeManagementModel.FK_Invoice_Student">
             <End Role="Student" EntitySet="Student" />
             <End Role="Invoice" EntitySet="Invoice" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Invoice" Association="Self.FK_Order_Invoice">
+          <AssociationSet Name="FK_Order_Invoice" Association="FeeManagementModel.FK_Order_Invoice">
             <End Role="Invoice" EntitySet="Invoice" />
             <End Role="SubInvoice" EntitySet="SubInvoice" />
           </AssociationSet>
-          <AssociationSet Name="FK_Receipt_Invoice1" Association="Self.FK_Receipt_Invoice1">
+          <AssociationSet Name="FK_Receipt_Invoice1" Association="FeeManagementModel.FK_Receipt_Invoice1">
             <End Role="Invoice" EntitySet="Invoice" />
             <End Role="Receipt" EntitySet="Receipt" />
           </AssociationSet>
-          <AssociationSet Name="FK_SubOrder_Rate" Association="Self.FK_SubOrder_Rate">
+          <AssociationSet Name="FK_SubOrder_Rate" Association="FeeManagementModel.FK_SubOrder_Rate">
             <End Role="Rate" EntitySet="Rate" />
             <End Role="Receipt" EntitySet="Receipt" />
           </AssociationSet>
-          <AssociationSet Name="FK_RoleFunction_Role1" Association="Self.FK_RoleFunction_Role1">
+          <AssociationSet Name="FK_RoleFunction_Role1" Association="FeeManagementModel.FK_RoleFunction_Role1">
             <End Role="Role" EntitySet="Role" />
             <End Role="RoleFunction" EntitySet="RoleFunction" />
           </AssociationSet>
-          <AssociationSet Name="Student_Class" Association="Self.Student_Class">
+          <AssociationSet Name="Student_Class" Association="FeeManagementModel.Student_Class">
             <End Role="Class" EntitySet="Class" />
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
@@ -1250,6 +804,457 @@ FROM [dbo].[vwReceipt] AS [vwReceipt]</DefiningQuery>
             <Parameter Name="currentDate" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ClassId" />
+          </Key>
+          <Property Name="ClassId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClassTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Shift" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IsEnded" Type="Boolean" />
+          <NavigationProperty Name="Object" Relationship="FeeManagementModel.FK_Class_ClassType" FromRole="Class" ToRole="Object" />
+          <NavigationProperty Name="Student" Relationship="FeeManagementModel.Student_Class" FromRole="Class" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="FeeAccount">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Role" Relationship="FeeManagementModel.FK_FeeAccount_Role" FromRole="FeeAccount" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="FeeLevel">
+          <Key>
+            <PropertyRef Name="FeeLevelId" />
+          </Key>
+          <Property Name="FeeLevelId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PaidTime" Type="Int32" Nullable="false" />
+          <Property Name="TotalMoney" Type="Double" Nullable="false" />
+          <Property Name="Period" Type="Int32" Nullable="false" />
+          <Property Name="ObjectID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Object" Relationship="FeeManagementModel.FK_FeeLevel_Object" FromRole="FeeLevel" ToRole="Object" />
+          <NavigationProperty Name="Invoice" Relationship="FeeManagementModel.FK_Invoice_FeeLevel" FromRole="FeeLevel" ToRole="Invoice" />
+          <NavigationProperty Name="Receipt" Relationship="FeeManagementModel.FK_SubOrder_FeeLevel" FromRole="FeeLevel" ToRole="Receipt" />
+        </EntityType>
+        <EntityType Name="Function">
+          <Key>
+            <PropertyRef Name="FunctionId" />
+          </Key>
+          <Property Name="FunctionId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FunctionName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="RoleFunction" Relationship="FeeManagementModel.FK_RoleFunction_Function1" FromRole="Function" ToRole="RoleFunction" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Name="InvoiceId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="ClassTypeID" Type="Int32" Nullable="false" />
+          <Property Name="FeeLevelId" Type="Int32" Nullable="false" />
+          <Property Name="RegisterInGroup" Type="Int32" Nullable="false" />
+          <Property Name="ActivatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="IsActivated" Type="Boolean" />
+          <NavigationProperty Name="FeeLevel" Relationship="FeeManagementModel.FK_Invoice_FeeLevel" FromRole="Invoice" ToRole="FeeLevel" />
+          <NavigationProperty Name="Student" Relationship="FeeManagementModel.FK_Invoice_Student" FromRole="Invoice" ToRole="Student" />
+          <NavigationProperty Name="SubInvoice" Relationship="FeeManagementModel.FK_Order_Invoice" FromRole="Invoice" ToRole="SubInvoice" />
+          <NavigationProperty Name="Receipt" Relationship="FeeManagementModel.FK_Receipt_Invoice1" FromRole="Invoice" ToRole="Receipt" />
+        </EntityType>
+        <EntityType Name="Object">
+          <Key>
+            <PropertyRef Name="ObjectId" />
+          </Key>
+          <Property Name="ObjectId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ObjectName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Class" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Notes" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Class1" Relationship="FeeManagementModel.FK_Class_ClassType" FromRole="Object" ToRole="Class" />
+          <NavigationProperty Name="FeeLevel" Relationship="FeeManagementModel.FK_FeeLevel_Object" FromRole="Object" ToRole="FeeLevel" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="RateId" />
+          </Key>
+          <Property Name="RateId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="USDRate" Type="Double" Nullable="false" />
+          <Property Name="VNDRate" Type="Double" Nullable="false" />
+          <Property Name="RateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Receipt" Relationship="FeeManagementModel.FK_SubOrder_Rate" FromRole="Rate" ToRole="Receipt" />
+        </EntityType>
+        <EntityType Name="Receipt">
+          <Key>
+            <PropertyRef Name="ReceiptID" />
+          </Key>
+          <Property Name="ReceiptID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" />
+          <Property Name="FeeLevelId" Type="Int32" Nullable="false" />
+          <Property Name="FeeObjectId" Type="Int32" />
+          <Property Name="RateId" Type="Int32" Nullable="false" />
+          <Property Name="Money" Type="Double" Nullable="false" />
+          <Property Name="FeeDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Notes" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="FeeLevel" Relationship="FeeManagementModel.FK_SubOrder_FeeLevel" FromRole="Receipt" ToRole="FeeLevel" />
+          <NavigationProperty Name="Invoice" Relationship="FeeManagementModel.FK_Receipt_Invoice1" FromRole="Receipt" ToRole="Invoice" />
+          <NavigationProperty Name="Rate" Relationship="FeeManagementModel.FK_SubOrder_Rate" FromRole="Receipt" ToRole="Rate" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="FeeAccount" Relationship="FeeManagementModel.FK_FeeAccount_Role" FromRole="Role" ToRole="FeeAccount" />
+          <NavigationProperty Name="RoleFunction" Relationship="FeeManagementModel.FK_RoleFunction_Role1" FromRole="Role" ToRole="RoleFunction" />
+        </EntityType>
+        <EntityType Name="RoleFunction">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="FunctionId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="FunctionId" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Function" Relationship="FeeManagementModel.FK_RoleFunction_Function1" FromRole="RoleFunction" ToRole="Function" />
+          <NavigationProperty Name="Role" Relationship="FeeManagementModel.FK_RoleFunction_Role1" FromRole="RoleFunction" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentCode" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="StudentName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Invoice" Relationship="FeeManagementModel.FK_Invoice_Student" FromRole="Student" ToRole="Invoice" />
+          <NavigationProperty Name="Class" Relationship="FeeManagementModel.Student_Class" FromRole="Student" ToRole="Class" />
+        </EntityType>
+        <EntityType Name="SubInvoice">
+          <Key>
+            <PropertyRef Name="SubInvoiceId" />
+          </Key>
+          <Property Name="SubInvoiceId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
+          <Property Name="Money" Type="Double" Nullable="false" />
+          <Property Name="FeeDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsPaid" Type="Boolean" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Invoice" Relationship="FeeManagementModel.FK_Order_Invoice" FromRole="SubInvoice" ToRole="Invoice" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="vwActivation">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+            <PropertyRef Name="ActivatedDate" />
+            <PropertyRef Name="RegisterInGroup" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="StudentName" />
+            <PropertyRef Name="Birthday" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="ObjectId" />
+            <PropertyRef Name="ObjectName" />
+            <PropertyRef Name="FeeLevelId" />
+            <PropertyRef Name="PaidTime" />
+          </Key>
+          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
+          <Property Name="ActivatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActivated" Type="Boolean" />
+          <Property Name="RegisterInGroup" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="StudentCode" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="StudentName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="ObjectId" Type="Int32" Nullable="false" />
+          <Property Name="ObjectName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FeeLevelId" Type="Int32" Nullable="false" />
+          <Property Name="PaidTime" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwInvoice">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+            <PropertyRef Name="ActivatedDate" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="StudentName" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="Birthday" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="ClassId" />
+            <PropertyRef Name="ClassName" />
+            <PropertyRef Name="DateStart" />
+            <PropertyRef Name="FeeLevelId" />
+            <PropertyRef Name="TotalMoney" />
+            <PropertyRef Name="PaidTime" />
+            <PropertyRef Name="Money" />
+            <PropertyRef Name="IsPaid" />
+            <PropertyRef Name="FeeDate" />
+          </Key>
+          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
+          <Property Name="ActivatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="StudentCode" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="StudentName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ClassId" Type="Int32" Nullable="false" />
+          <Property Name="ClassName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Shift" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FeeLevelId" Type="Int32" Nullable="false" />
+          <Property Name="TotalMoney" Type="Double" Nullable="false" />
+          <Property Name="PaidTime" Type="Int32" Nullable="false" />
+          <Property Name="TimeOfPayment" Type="Int32" />
+          <Property Name="Money" Type="Double" Nullable="false" />
+          <Property Name="IsPaid" Type="Boolean" Nullable="false" />
+          <Property Name="FeeDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OverDay" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="vwInvoiceWithoutClass">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+            <PropertyRef Name="ActivatedDate" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="StudentName" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="Birthday" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="FeeLevelId" />
+            <PropertyRef Name="TotalMoney" />
+            <PropertyRef Name="PaidTime" />
+            <PropertyRef Name="Money" />
+            <PropertyRef Name="IsPaid" />
+            <PropertyRef Name="FeeDate" />
+          </Key>
+          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
+          <Property Name="ActivatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="StudentCode" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="StudentName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FeeLevelId" Type="Int32" Nullable="false" />
+          <Property Name="TotalMoney" Type="Double" Nullable="false" />
+          <Property Name="PaidTime" Type="Int32" Nullable="false" />
+          <Property Name="TimeOfPayment" Type="Int32" />
+          <Property Name="Money" Type="Double" Nullable="false" />
+          <Property Name="IsPaid" Type="Boolean" Nullable="false" />
+          <Property Name="FeeDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OverDay" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="vwReceipt">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="StudentName" />
+            <PropertyRef Name="PaidAmount" />
+            <PropertyRef Name="TotalMoney" />
+            <PropertyRef Name="FeeDate" />
+            <PropertyRef Name="ObjectId" />
+            <PropertyRef Name="ObjectName" />
+            <PropertyRef Name="PaidTime" />
+          </Key>
+          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="StudentCode" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="StudentName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PaidAmount" Type="Double" Nullable="false" />
+          <Property Name="TotalMoney" Type="Double" Nullable="false" />
+          <Property Name="FeeDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ObjectId" Type="Int32" Nullable="false" />
+          <Property Name="ObjectName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Class" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PaidTime" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Class_ClassType">
+          <End Role="Object" Type="FeeManagementModel.Object" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Class" Type="FeeManagementModel.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Object">
+              <PropertyRef Name="ObjectId" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="ClassTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeeAccount_Role">
+          <End Role="Role" Type="FeeManagementModel.Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FeeAccount" Type="FeeManagementModel.FeeAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="FeeAccount">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeeLevel_Object">
+          <End Role="Object" Type="FeeManagementModel.Object" Multiplicity="1" />
+          <End Role="FeeLevel" Type="FeeManagementModel.FeeLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Object">
+              <PropertyRef Name="ObjectId" />
+            </Principal>
+            <Dependent Role="FeeLevel">
+              <PropertyRef Name="ObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_FeeLevel">
+          <End Role="FeeLevel" Type="FeeManagementModel.FeeLevel" Multiplicity="1" />
+          <End Role="Invoice" Type="FeeManagementModel.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FeeLevel">
+              <PropertyRef Name="FeeLevelId" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="FeeLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubOrder_FeeLevel">
+          <End Role="FeeLevel" Type="FeeManagementModel.FeeLevel" Multiplicity="1" />
+          <End Role="Receipt" Type="FeeManagementModel.Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FeeLevel">
+              <PropertyRef Name="FeeLevelId" />
+            </Principal>
+            <Dependent Role="Receipt">
+              <PropertyRef Name="FeeLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleFunction_Function1">
+          <End Role="Function" Type="FeeManagementModel.Function" Multiplicity="1" />
+          <End Role="RoleFunction" Type="FeeManagementModel.RoleFunction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Function">
+              <PropertyRef Name="FunctionId" />
+            </Principal>
+            <Dependent Role="RoleFunction">
+              <PropertyRef Name="FunctionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Student">
+          <End Role="Student" Type="FeeManagementModel.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Invoice" Type="FeeManagementModel.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Invoice">
+          <End Role="Invoice" Type="FeeManagementModel.Invoice" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SubInvoice" Type="FeeManagementModel.SubInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="InvoiceId" />
+            </Principal>
+            <Dependent Role="SubInvoice">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receipt_Invoice1">
+          <End Role="Invoice" Type="FeeManagementModel.Invoice" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Receipt" Type="FeeManagementModel.Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="InvoiceId" />
+            </Principal>
+            <Dependent Role="Receipt">
+              <PropertyRef Name="InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubOrder_Rate">
+          <End Role="Rate" Type="FeeManagementModel.Rate" Multiplicity="1" />
+          <End Role="Receipt" Type="FeeManagementModel.Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rate">
+              <PropertyRef Name="RateId" />
+            </Principal>
+            <Dependent Role="Receipt">
+              <PropertyRef Name="RateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleFunction_Role1">
+          <End Role="Role" Type="FeeManagementModel.Role" Multiplicity="1" />
+          <End Role="RoleFunction" Type="FeeManagementModel.RoleFunction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="RoleFunction">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Student_Class">
+          <End Role="Class" Type="FeeManagementModel.Class" Multiplicity="*" />
+          <End Role="Student" Type="FeeManagementModel.Student" Multiplicity="*" />
+        </Association>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -1490,7 +1495,6 @@ FROM [dbo].[vwReceipt] AS [vwReceipt]</DefiningQuery>
                 <ScalarProperty Name="FeeDate" ColumnName="FeeDate" />
                 <ScalarProperty Name="OverDay" ColumnName="OverDay" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1563,9 +1567,8 @@ FROM [dbo].[vwReceipt] AS [vwReceipt]</DefiningQuery>
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3e69262f3f0b4d61a130cdf0dbf14dff" Name="Diagram1">
+      <Diagram DiagramId="4cc2503fbe9a4d57ab7e12a0b891c8e5" Name="Diagram1">
         <EntityTypeShape EntityType="FeeManagementModel.Class" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="FeeManagementModel.FeeAccount" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="FeeManagementModel.FeeLevel" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />

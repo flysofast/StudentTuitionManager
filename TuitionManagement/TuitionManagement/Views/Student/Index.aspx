@@ -148,7 +148,7 @@
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: center; padding-top: 10px">
-                            <button type="button" class="btn btn-default" onclick="">Add</button>
+                            <button type="button" class="btn btn-default" onclick="Create()">Add</button>
                             <button type="button" class="btn btn-default" onclick="">Edit</button>
                             <button type="button" class="btn btn-default" onclick="">Delete</button>
                             <button type="button" class="btn btn-default" onclick="">New</button>

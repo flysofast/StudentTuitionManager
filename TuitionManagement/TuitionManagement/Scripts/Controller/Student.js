@@ -19,27 +19,41 @@ function FindStudentByID(studentID, callback) {
 
 function Create() {
     var obj = {
-        Username: $("#username").val(),
-        Password: $("#password").val(),
-        Password: $("#role").val(),
-        isActive: true,
+        Student:
+            {
+                StudentCode: $('#tbStudentCode').val(),
+                StudentName: $('#tbStudentName').val(),
+                Birthday: $("#dpBirthday").datepicker('getDate'),
+                Gender: $('#rdbMale').prop("checked"),
+                Address: $('#tbAddress').val(),
+                Phone: $('#tbPhone').val(),
+                Email: $('#tbEmail').val(),
+            },
+        ClassTypeID: $('option:selected', $('#opClassType')).val(),
+        FeeLevelID: $('option:selected', $('#opPaidTimes')).val(),
+        GroupRegister: $('option:selected', $('#opRegGroup')).val()
     };
 
+    console.log(JSON.stringify(obj));
+
     $.ajax({
-        url: 'Create_Api',
+        url: 'CreateAPI',
         data: JSON.stringify(obj),
         dataType: 'json',
+        contentType: "application/json; charset=utf-8",
         type: 'POST',
-        error: function () {
-            swal("Error...", "Cannot create new account! \n Cannot get to server API", "error");
+        error: function (data) {
+            console.log(data);
+            swal("Error", data, "error");
         },
         success: function (data) {
-            console.log(data);
-            if (data == 1) {
-                swal("Successfully!", "Created new account!", "success")
-            } else {
-                swal("Error...", "Cannot create new account!", "error");
-            }
+            swal("Successfully!", "Registration successful! InvoiceID: "+data.invoiceID, "success");
+            //console.log(data);
+            //if (data == 1) {
+            //    swal("Successfully!", "Created new account!", "success");
+            //} else {
+            //    swal("Error...", "Cannot create new account!", "error");
+            //}
         }
     });
 }
@@ -110,7 +124,7 @@ function populateClassInfo() {
                     if (item.ClassTypeID == ID) {
                         $('#opPaidTimes').html('');
                         $.each(item.PaidTimes, function (index, item) {
-                            $('#opPaidTimes').append('<option value=' + item.PaidTime + '>' + item.PaidTime + '</option>');
+                            $('#opPaidTimes').append('<option value=' + item.FeeLevelId + '>' + item.PaidTime + '</option>');
                         });
                     }
                 });

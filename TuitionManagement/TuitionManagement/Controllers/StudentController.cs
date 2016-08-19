@@ -2,7 +2,9 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TuitionManagement.Models;
@@ -19,10 +21,35 @@ namespace TuitionManagement.Controllers
 
             return View();
         }
-
-        public JsonResult CreateAPI(Student item)
+        public JsonResult CreateAPI(StudentRegistration item)
         {
-            return null;
+
+            try
+            {
+                Student student = item.Student;
+                db.Student.Add(student);
+                db.SaveChanges();
+
+                Invoice invoice = new Invoice();
+                invoice.StudentId = student.StudentId;
+                invoice.RegisterInGroup = item.GroupRegister;
+                invoice.FeeLevelId = item.FeeLevelID;
+                invoice.IsActivated = false;
+
+                db.Invoice.Add(invoice);
+                db.SaveChanges();
+
+                return Json(new { invoiceID=invoice.InvoiceId}, JsonRequestBehavior.AllowGet);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json( ex.Message , JsonRequestBehavior.AllowGet); ;
+
+            }
+
         }
 
         public JsonResult LoadTableDataAPI()
@@ -34,11 +61,12 @@ namespace TuitionManagement.Controllers
         {
             var result = db.Object.Select(p => new
             {
-                ClassTypeID=p.ObjectId,
-                ClassType=p.ObjectName,
+                ClassTypeID = p.ObjectId,
+                ClassType = p.ObjectName,
                 p.Class,
                 PaidTimes = p.FeeLevel.Select(fl => new
                 {
+                    fl.FeeLevelId,
                     fl.PaidTime
                 }),
 
@@ -86,5 +114,21 @@ namespace TuitionManagement.Controllers
 
             }
         }
+    }
+
+    public class StudentRegistration
+    {
+        [Display(Name = "Student")]
+        public Student Student { set; get; }
+
+        [Display(Name = "ClassTypeID")]
+        public int ClassTypeID { set; get; }
+
+        [Display(Name = "FeeLevelID")]
+        public int FeeLevelID { set; get; }
+
+        [Display(Name = "GroupRegister")]
+        public int GroupRegister { set; get; }
+
     }
 }

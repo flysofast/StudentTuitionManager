@@ -55,7 +55,7 @@
           <Property Name="ClassTypeID" Type="int" Nullable="false" />
           <Property Name="FeeLevelId" Type="int" Nullable="false" />
           <Property Name="RegisterInGroup" Type="int" Nullable="false" />
-          <Property Name="ActivatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ActivatedDate" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="Notes" Type="nvarchar" MaxLength="128" />
           <Property Name="IsActivated" Type="bit" />
         </EntityType>
@@ -708,7 +708,7 @@ FROM [dbo].[vwReceipt] AS [vwReceipt]</DefiningQuery>
           <Property Name="ClassTypeID" Type="Int32" Nullable="false" />
           <Property Name="FeeLevelId" Type="Int32" Nullable="false" />
           <Property Name="RegisterInGroup" Type="Int32" Nullable="false" />
-          <Property Name="ActivatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ActivatedDate" Type="DateTime" Precision="3" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="Notes" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="IsActivated" Type="Boolean" />
           <NavigationProperty Name="FeeLevel" Relationship="Self.FK_Invoice_FeeLevel" FromRole="Invoice" ToRole="FeeLevel" />

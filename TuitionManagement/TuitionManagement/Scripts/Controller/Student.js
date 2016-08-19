@@ -28,13 +28,13 @@ function Create() {
                 Address: $('#tbAddress').val(),
                 Phone: $('#tbPhone').val(),
                 Email: $('#tbEmail').val(),
+
             },
+
         ClassTypeID: $('option:selected', $('#opClassType')).val(),
         FeeLevelID: $('option:selected', $('#opPaidTimes')).val(),
         GroupRegister: $('option:selected', $('#opRegGroup')).val()
     };
-
-    console.log(JSON.stringify(obj));
 
     $.ajax({
         url: 'CreateAPI',
@@ -43,11 +43,10 @@ function Create() {
         contentType: "application/json; charset=utf-8",
         type: 'POST',
         error: function (data) {
-            console.log(data);
-            swal("Error", data, "error");
+            swal("Error", data.responseText, "error");
         },
         success: function (data) {
-            swal("Successfully!", "Registration successful! InvoiceID: "+data.invoiceID, "success");
+            swal("Successfully!", "Registration successful! InvoiceID: " + data.invoiceID, "success");
             //console.log(data);
             //if (data == 1) {
             //    swal("Successfully!", "Created new account!", "success");
@@ -58,6 +57,40 @@ function Create() {
     });
 }
 
+function Update(StudentID) {
+    console.log("Update ID: " + StudentID);
+    var obj =
+        {
+            StudentId: StudentID,
+            StudentCode: $('#tbStudentCode').val(),
+            StudentName: $('#tbStudentName').val(),
+            Birthday: $("#dpBirthday").datepicker('getDate'),
+            Gender: $('#rdbMale').prop("checked"),
+            Address: $('#tbAddress').val(),
+            Phone: $('#tbPhone').val(),
+            Email: $('#tbEmail').val(),
+        };
+
+    $.ajax({
+        url: 'UpdateAPI',
+        data: JSON.stringify(obj),
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        type: 'POST',
+        error: function (data) {
+            swal("Error", data.responseText, "error");
+        },
+        success: function (data) {
+            swal("Successfully!", "Updated student information successfully!", "success");
+            //console.log(data);
+            //if (data == 1) {
+            //    swal("Successfully!", "Created new account!", "success");
+            //} else {
+            //    swal("Error...", "Cannot create new account!", "error");
+            //}
+        }
+    });
+}
 
 
 function LoadTableData() {

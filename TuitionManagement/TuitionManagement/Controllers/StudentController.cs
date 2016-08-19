@@ -21,6 +21,12 @@ namespace TuitionManagement.Controllers
 
             return View();
         }
+
+        /// <summary>
+        /// Create new item
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>InvoiceID or error message</returns>
         public JsonResult CreateAPI(StudentRegistration item)
         {
 
@@ -39,24 +45,67 @@ namespace TuitionManagement.Controllers
                 db.Invoice.Add(invoice);
                 db.SaveChanges();
 
-                return Json(new { invoiceID=invoice.InvoiceId}, JsonRequestBehavior.AllowGet);
+                return Json(new { invoiceID = invoice.InvoiceId }, JsonRequestBehavior.AllowGet);
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                return Json( ex.Message , JsonRequestBehavior.AllowGet); ;
+                return Json(ex.Message, JsonRequestBehavior.AllowGet); ;
+
+            }
+
+        }
+        /// <summary>
+        /// Update student infomation
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public JsonResult UpdateAPI(Student item)
+        {
+            try
+            {
+                var obj = db.Student.Find(item.StudentId);
+                if (obj != null)
+                {
+                    obj.StudentName = item.StudentName;
+                    obj.StudentCode = item.StudentCode;
+                    obj.Address = item.Address;
+                    obj.Phone = item.Phone;
+                    obj.Birthday = item.Birthday;
+                    obj.Email = item.Email;
+                    obj.Gender = item.Gender;
+                    db.SaveChanges();
+                }
+
+                return Json(1, JsonRequestBehavior.AllowGet);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(ex.Message, JsonRequestBehavior.AllowGet); ;
 
             }
 
         }
 
+
+        /// <summary>
+        /// Load table data from database
+        /// </summary>
+        /// <returns></returns>
         public JsonResult LoadTableDataAPI()
         {
             return Json(db.Student.Select(p => new { p.StudentId, p.StudentCode, p.StudentName, p.Birthday }).ToList(), JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// Get classtype info
+        /// </summary>
+        /// <returns>classtype related info</returns>
         public JsonResult GetClassesInfoAPI()
         {
             var result = db.Object.Select(p => new
@@ -85,7 +134,11 @@ namespace TuitionManagement.Controllers
 
         }
 
-
+        /// <summary>
+        /// Find student by ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public JsonResult FindStudentByIDAPI(int id)
         {
             var result = db.Student.Where(p => p.StudentId == id).Select(p => new

@@ -47,6 +47,7 @@ function Create() {
         },
         success: function (data) {
             swal("Successfully!", "Registration successful! InvoiceID: " + data.invoiceID, "success");
+            LoadTableData();
             //console.log(data);
             //if (data == 1) {
             //    swal("Successfully!", "Created new account!", "success");
@@ -82,6 +83,7 @@ function Update(StudentID) {
         },
         success: function (data) {
             swal("Successfully!", "Updated student information successfully!", "success");
+            LoadTableData();
             //console.log(data);
             //if (data == 1) {
             //    swal("Successfully!", "Created new account!", "success");
@@ -103,12 +105,16 @@ function LoadTableData() {
             swal("Action failed", "Couldn't load data", "error");
         },
         success: function (result) {
+            console.log(result);
             var html = '';
             $.each(result, function (index) {
                 var myDate = new Date(parseInt(result[index]['Birthday'].replace('/Date(', '')));
-
+                var code = result[index]['StudentCode'];
                 html += '<tr studentid=' + result[index]['StudentId'] + '>';
-                html += '<td class="StudentCodeCell">' + result[index]['StudentCode'] + '</td>';
+
+                var safeCode = (code == null) ? '' : code;
+                html += '<td class="StudentCodeCell">' + safeCode + '</td>';
+
                 html += '<td>' + result[index]['StudentName'] + '</td>';
                 html += '<td>' + myDate.ddmmyyyy() + '</td>';
                 html += '</tr>';

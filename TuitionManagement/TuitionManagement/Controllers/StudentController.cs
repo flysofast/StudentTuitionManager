@@ -16,7 +16,7 @@ namespace TuitionManagement.Controllers
         //
         // GET: /Student/
         FeeManagementEntities db = new FeeManagementEntities();
-        public ActionResult Index()
+        public ActionResult Register()
         {
 
             return View();
@@ -213,21 +213,31 @@ namespace TuitionManagement.Controllers
 
             }
         }
+
+        public class StudentRegistration
+        {
+            [Display(Name = "Student")]
+            public Student Student { set; get; }
+
+            [Display(Name = "ClassTypeID")]
+            public int ClassTypeID { set; get; }
+
+            [Display(Name = "FeeLevelID")]
+            public int FeeLevelID { set; get; }
+
+            [Display(Name = "GroupRegister")]
+            public int GroupRegister { set; get; }
+
+        }
+
+        //------------------------CLASSIFY------------------------------------
+        public ActionResult Classify()
+        {
+            return View();
+        }
     }
 
-    public class StudentRegistration
-    {
-        [Display(Name = "Student")]
-        public Student Student { set; get; }
+   
 
-        [Display(Name = "ClassTypeID")]
-        public int ClassTypeID { set; get; }
-
-        [Display(Name = "FeeLevelID")]
-        public int FeeLevelID { set; get; }
-
-        [Display(Name = "GroupRegister")]
-        public int GroupRegister { set; get; }
-
-    }
+    
 }

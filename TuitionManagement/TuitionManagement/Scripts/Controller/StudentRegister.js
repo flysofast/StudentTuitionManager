@@ -160,10 +160,11 @@ function LoadTableData() {
                 FindStudentByID(ID, populateInfoForm);
 
             });
-            populateClassInfo();
+            
 
         }
     });
+
 }
 
 //------------------------------UTILITIES--------------------------------
@@ -236,6 +237,7 @@ $(function () {
     $("#dpBirthday").datepicker({ dateFormat: "dd/mm/yy" });
     //$("#opRegGroup").multiselect().multiselectfilter();
     LoadTableData();
+    populateClassInfo();
 
    
 

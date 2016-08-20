@@ -3,8 +3,7 @@
 <asp:Content ID="Content" ContentPlaceHolderID="Header" runat="server">
     <link href="../../Content/student.css" rel="stylesheet" />
     <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
-    <link href="../../Content/bootstrap-table.min.css" rel="stylesheet" />
-    <link href="../../Content/bootstrapValidator.min.css" rel="stylesheet" />
+
     <%--    <link href="../../Content/themes/jquery.multiselect.css" rel="stylesheet" />
     <link href="../../Content/themes/jquery.multiselect.filter.css" rel="stylesheet" />--%>
 </asp:Content>
@@ -68,7 +67,7 @@
 
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <form id="student-info" role="form" data-toggle="validator">
+                <form id="student-info" role="form">
                     <table id="form-table" cellspacing="0">
                         <tr>
                             <td>Student code:</td>
@@ -96,12 +95,12 @@
                         <tr>
                             <td>Birthday (*):</td>
                             <td>
-                                <input type="text" id="dpBirthday" class="form-control" required="required"></td>
+                                <input type="text" id="dpBirthday" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Address (*):</td>
                             <td>
-                                <input type="text" id="tbAddress" class="form-control" required />
+                                <input type="text" id="tbAddress" class="form-control" />
 
                             </td>
                         </tr>
@@ -159,15 +158,13 @@
             <div class="col-md-2"></div>
 
         </div>
-
     </div>
 
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" type="text/javascript"></script>
     <%--   <script src="../../Scripts/jquery.multiselect.min.js"></script>
     <script src="../../Scripts/jquery.multiselect.filter.min.js"></script>--%>
-    <script src="../../Scripts/bootstrapValidator.min.js"></script>
 
-    <script src="../../Scripts/Controller/Student.js" type="text/javascript"></script>
+    <script src="../../Scripts/Controller/StudentRegister.js" type="text/javascript"></script>
 </asp:Content>
 
 

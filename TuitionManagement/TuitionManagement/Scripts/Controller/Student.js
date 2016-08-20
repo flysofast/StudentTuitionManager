@@ -167,7 +167,14 @@ function LoadTableData() {
 }
 
 //------------------------------UTILITIES--------------------------------
-
+function ClearFields() {
+    $('#tbStudentCode').val('');
+    $("#dpBirthday").datepicker("setDate", new Date());
+    $('#tbStudentName').val('');
+    $('#tbAddress').val('');
+    $('#tbPhone').val('');
+    $('#tbEmail').val('');
+}
 function populateClassInfo() {
     $.ajax({
         url: 'GetClassesInfoAPI',
@@ -229,6 +236,8 @@ $(function () {
     $("#dpBirthday").datepicker({ dateFormat: "dd/mm/yy" });
     //$("#opRegGroup").multiselect().multiselectfilter();
     LoadTableData();
+
+   
 
 });
 

@@ -58,6 +58,38 @@ function Create() {
     });
 }
 
+function Delete(StudentID) {
+    swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this imaginary file!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        closeOnConfirm: false
+    }, function () {
+        var obj = { id: StudentID };
+        $.ajax({
+            url: 'DeleteAPI',
+            data: JSON.stringify(obj),
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            type: 'POST',
+            error: function (data) {
+                swal("Error", data.responseText, "error");
+            },
+            success: function (data) {
+                swal("Deleted!", "Student deleted successfully!", "success");
+                LoadTableData();
+
+            }
+        });
+    });
+
+    console.log("Delete ID: " + StudentID);
+
+}
+
 function Update(StudentID) {
     console.log("Update ID: " + StudentID);
     var obj =
@@ -82,7 +114,7 @@ function Update(StudentID) {
             swal("Error", data.responseText, "error");
         },
         success: function (data) {
-            swal("Successfully!", "Updated student information successfully!", "success");
+            swal("Updated!", "Updated student information successfully!", "success");
             LoadTableData();
             //console.log(data);
             //if (data == 1) {
@@ -105,7 +137,6 @@ function LoadTableData() {
             swal("Action failed", "Couldn't load data", "error");
         },
         success: function (result) {
-            console.log(result);
             var html = '';
             $.each(result, function (index) {
                 var myDate = new Date(parseInt(result[index]['Birthday'].replace('/Date(', '')));

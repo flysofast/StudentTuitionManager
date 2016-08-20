@@ -134,6 +134,52 @@ namespace TuitionManagement.Controllers
 
         }
 
+        public JsonResult DeleteAPI(int id)
+        {
+            try
+            {
+                var invoices = db.Invoice.Where(p => p.StudentId == id);
+                foreach (var invoice in invoices)
+                {
+                    var subinvoices = db.SubInvoice.Where(p => p.InvoiceId == invoice.InvoiceId);
+                    foreach (var subinvoice in subinvoices)
+                    {
+                        db.SubInvoice.Remove(subinvoice);
+                    }
+                    var receipts = db.Receipt.Where(p => p.InvoiceID == invoice.InvoiceId);
+                    foreach (var receipt in receipts)
+                    {
+                        db.Receipt.Remove(receipt);
+                    }
+
+                    db.SaveChanges();
+
+                    db.Invoice.Remove(invoice);
+                }
+
+                db.SaveChanges();
+
+                var student = db.Student.Find(id);
+                if (student != null)
+                {
+                    db.Student.Remove(student);
+                    db.SaveChanges();
+
+                }
+                return Json(1, JsonRequestBehavior.AllowGet);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(ex.Message, JsonRequestBehavior.AllowGet); ;
+
+            }
+
+
+        }
+
         /// <summary>
         /// Find student by ID
         /// </summary>

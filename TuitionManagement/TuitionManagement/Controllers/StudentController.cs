@@ -181,7 +181,7 @@ namespace TuitionManagement.Controllers
             {
                 Console.WriteLine(ex.Message);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                return Json(ex.Message, JsonRequestBehavior.AllowGet); ;
+                return Json(ex.Message, JsonRequestBehavior.AllowGet);
 
             }
 
@@ -210,16 +210,9 @@ namespace TuitionManagement.Controllers
 
             }).FirstOrDefault();
 
-            if (result == null)
-            {
-                return Json(0, JsonRequestBehavior.AllowGet);
 
-            }
-            else
-            {
-                return Json(result, JsonRequestBehavior.AllowGet);
+            return Json(result, JsonRequestBehavior.AllowGet);
 
-            }
         }
 
         public class StudentRegistration
@@ -243,9 +236,70 @@ namespace TuitionManagement.Controllers
         {
             return View();
         }
+        /// <summary>
+        ///Get registration data based on classified status 
+        /// 
+        /// </summary>
+        /// <param name="isClassified"></param>
+        /// <param name="classTypeID"></param>
+        /// <returns></returns>
+        public JsonResult GetRegistrationRecordsAPI(bool isClassified, int classTypeID = -1)
+        {
+            try
+            {
+                IQueryable<Invoice> invoices;  //Default value is -1 for ClassID (database design)
+
+                // CLASSIFIED FILTER
+                if (isClassified)
+                {
+                    invoices = db.Invoice.Where(p => p.ClassID != -1);
+                }
+                else
+                {
+                    invoices = db.Invoice.Where(p => p.ClassID == -1);
+                }
+
+                //CLASS TYPE FILTER
+                //- 1: ALL
+                if (classTypeID != -1)
+                {
+                    invoices = invoices.Where(p => p.ClassTypeID == classTypeID);
+                }
+
+                var resultData = invoices.Select(p => new
+                {
+                    p.StudentId,
+                    p.Student.StudentName,
+                    p.Student.Birthday,
+                    ClassType = db.Object.Where(q => q.ObjectId == p.ClassTypeID).Select(q => q.ObjectName).FirstOrDefault(),
+                    p.ActivatedDate,
+                    ClassOptions = db.Class.Where(q => q.ClassTypeId == p.ClassTypeID).Select(q => new
+                    {
+                        q.ClassId,
+                        q.ClassName
+                    }),
+                    AssignedClass = db.Class.Where(q => q.ClassId == p.ClassID).Select(q => new
+                    {
+                        q.ClassId,
+                        q.ClassName
+                    }).FirstOrDefault()
+                });
+
+                return Json(resultData, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(ex.Message, JsonRequestBehavior.AllowGet); ;
+            }
+
+
+        }
     }
-
-
-
-
 }
+
+
+
+

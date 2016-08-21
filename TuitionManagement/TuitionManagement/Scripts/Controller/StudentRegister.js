@@ -173,9 +173,13 @@ function LoadTableData() {
                     code: code,
                     name: value.StudentName,
                     birthday: birthday.ddmmyyyy(),
+
                 });
             });
-            $('#StudentList').bootstrapTable('load', rows);
+            var $table = $('#StudentList');
+            $table.bootstrapTable('load', rows);
+            $table.bootstrapTable('hideColumn', 'studentID');
+
             //Row selecting
             //$('#StudentList tbody tr').click(function () {
             //    var ID = $(this).attr('studentid');
@@ -266,9 +270,7 @@ $(function () {
 
 
     LoadTableData();
-    var $table = $('#StudentList');
 
-    $table.bootstrapTable('hideColumn', 'studentID');
 
     //$table.bootstrapTable({
     //    onClickCell: function (field, value, row, element) {

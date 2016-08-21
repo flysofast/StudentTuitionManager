@@ -72,6 +72,8 @@
 
             <div class="col-md-2"></div>
             <div class="col-md-8">
+                <br />
+                <h3>Registration information</h3>
                 <form id="student-info" role="form">
                     <table id="form-table" cellspacing="0">
                         <tr>

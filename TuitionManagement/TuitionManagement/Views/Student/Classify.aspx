@@ -20,7 +20,7 @@
     </ul>
 
     <div class="tab-content">
-        <div id="Classified" class="tab-pane fade in active">
+        <div id="Unclassified" class="tab-pane fade in active">
             <h3></h3>
             <div class="row">
                 <div class="col-md-3"></div>
@@ -39,7 +39,15 @@
                 <div class="col-md-10">
 
                     <br />
+                    <div id="toolbar">
+                        <button id="btDone" class="btn btn-success btn-md" onclick="">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Done
+
+                        </button>
+                        <button id="btClassManager" class="btn btn-info btn-md"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Class manager...</button>
+                    </div>
                     <table id="StudentList"
+                        data-toolbar="#toolbar"
                         data-toggle="table"
                         data-show-columns="false"
                         data-mobile-responsive="true"
@@ -66,7 +74,7 @@
 
             </div>
         </div>
-        <div id="Unclassified" class="tab-pane fade">
+        <div id="Classified" class="tab-pane fade">
             <h3>Menu 1</h3>
             <p>Some content in menu 1.</p>
         </div>

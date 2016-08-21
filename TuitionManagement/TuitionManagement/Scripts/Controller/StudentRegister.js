@@ -79,8 +79,13 @@ function Delete(StudentID) {
                 swal("Error", data.responseText, "error");
             },
             success: function (data) {
-                swal("Deleted!", "Student deleted successfully!", "success");
-                LoadTableData();
+                if (data != 1) {
+                    swal("Warning", data, "warning");
+                }
+                else {
+                    swal("Deleted!", "Student deleted successfully!", "success");
+                    LoadTableData();
+                }
 
             }
         });
@@ -114,8 +119,14 @@ function Update(StudentID) {
             swal("Error", data.responseText, "error");
         },
         success: function (data) {
-            swal("Updated!", "Updated student information successfully!", "success");
-            LoadTableData();
+            if (data != 1) {
+                swal("Warning", data, "warning");
+            }
+            else {
+                swal("Updated!", "Updated student information successfully!", "success");
+                LoadTableData();
+            }
+
             //console.log(data);
             //if (data == 1) {
             //    swal("Successfully!", "Created new account!", "success");
@@ -138,29 +149,41 @@ function LoadTableData() {
         },
         success: function (result) {
             var html = '';
-            $.each(result, function (index) {
-                var myDate = new Date(parseInt(result[index]['Birthday'].replace('/Date(', '')));
+            //$.each(result, function (index) {
+            //    var myDate = new Date(parseInt(result[index]['Birthday'].replace('/Date(', '')));
+            //    var code = result[index]['StudentCode'];
+            //    html += '<tr studentid=' + result[index]['StudentId'] + '>';
+
+            //    var safeCode = (code == null) ? '' : code;
+            //    html += '<td class="StudentCodeCell">' + safeCode + '</td>';
+
+            //    html += '<td>' + result[index]['StudentName'] + '</td>';
+            //    html += '<td>' + myDate.ddmmyyyy() + '</td>';
+            //    html += '</tr>';
+            //});
+
+            //$('#StudentList tbody').html(html);
+
+            var rows = [];
+            $.each(result, function (index, value) {
+                var birthday = new Date(parseInt(result[index]['Birthday'].replace('/Date(', '')));
                 var code = result[index]['StudentCode'];
-                html += '<tr studentid=' + result[index]['StudentId'] + '>';
-
-                var safeCode = (code == null) ? '' : code;
-                html += '<td class="StudentCodeCell">' + safeCode + '</td>';
-
-                html += '<td>' + result[index]['StudentName'] + '</td>';
-                html += '<td>' + myDate.ddmmyyyy() + '</td>';
-                html += '</tr>';
+                rows.push({
+                    studentID: value.StudentId,
+                    code: code,
+                    name: value.StudentName,
+                    birthday: birthday.ddmmyyyy(),
+                });
             });
-
-            $('#StudentList tbody').html(html);
-
+            $('#StudentList').bootstrapTable('load', rows);
             //Row selecting
-            $('#StudentList tbody tr').click(function () {
-                var ID = $(this).attr('studentid');
-                console.log("FINDID: " + ID);
-                FindStudentByID(ID, populateInfoForm);
+            //$('#StudentList tbody tr').click(function () {
+            //    var ID = $(this).attr('studentid');
+            //    console.log("FINDID: " + ID);
+            //    FindStudentByID(ID, populateInfoForm);
 
-            });
-            
+            //});
+
 
         }
     });
@@ -231,15 +254,40 @@ var populateInfoForm = function (data) {
 }
 
 $(function () {
-    $('#StudentList').on('click', 'tbody tr', function (event) {
-        $(this).addClass('highlight').siblings().removeClass('highlight');
-    });
+    //$('#StudentList').on('click', 'tbody tr', function (event) {
+    //});
+
+
+
     $("#dpBirthday").datepicker({ dateFormat: "dd/mm/yy" });
     //$("#opRegGroup").multiselect().multiselectfilter();
+
+
+
+
     LoadTableData();
+    var $table = $('#StudentList');
+
+    $table.bootstrapTable('hideColumn', 'studentID');
+
+    //$table.bootstrapTable({
+    //    onClickCell: function (field, value, row, element) {
+    //        console.log('adsdasadad');
+    //        //swal(item.studentID);
+    //    }
+    //});
+
+    $table.on('click-row.bs.table', function (e, row, $element) {
+        $element.addClass('highlight').siblings().removeClass('highlight');
+        FindStudentByID(row.studentID, populateInfoForm);
+
+
+    });
     populateClassInfo();
 
-   
+
+
+
 
 });
 

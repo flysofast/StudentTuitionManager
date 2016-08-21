@@ -78,6 +78,10 @@ namespace TuitionManagement.Controllers
                     obj.Gender = item.Gender;
                     db.SaveChanges();
                 }
+                else
+                {
+                    return Json("Student not found", JsonRequestBehavior.AllowGet);
+                }
 
                 return Json(1, JsonRequestBehavior.AllowGet);
 
@@ -166,6 +170,10 @@ namespace TuitionManagement.Controllers
                     db.SaveChanges();
 
                 }
+                else
+                {
+                    return Json("Student not found", JsonRequestBehavior.AllowGet);
+                }
                 return Json(1, JsonRequestBehavior.AllowGet);
 
             }
@@ -237,7 +245,7 @@ namespace TuitionManagement.Controllers
         }
     }
 
-   
 
-    
+
+
 }

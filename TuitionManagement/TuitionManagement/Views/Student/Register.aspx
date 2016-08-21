@@ -3,7 +3,7 @@
 <asp:Content ID="Content" ContentPlaceHolderID="Header" runat="server">
     <link href="../../Content/student.css" rel="stylesheet" />
     <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
-
+    <link href="../../Content/bootstrap-table.min.css" rel="stylesheet" />
     <%--    <link href="../../Content/themes/jquery.multiselect.css" rel="stylesheet" />
     <link href="../../Content/themes/jquery.multiselect.filter.css" rel="stylesheet" />--%>
 </asp:Content>
@@ -21,7 +21,7 @@
 
 
     <div class="container">
-        <div class="form-group">
+       <%-- <div class="form-group">
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-2 ">
@@ -36,26 +36,31 @@
                 </div>
                 <div class="col-md-1"></div>
 
-            </div>
+            </div>--%>
         </div>
 
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10">
-                <table id="StudentList" class="table table-hover table-responsive table-bordered table-striped"
+                <table id="StudentList"
                     data-toggle="table"
-                    data-height="460"
-                    data-pagination="true"
-                    data-search="true">
+                    data-show-columns="false"
+                    data-search="true"
+                    data-mobile-responsive="true"
+                    data-check-on-init="true"
+                    data-row-style="rowStyle"
+                    data-height="400"
+                    data-clickToSelect="true"
+                    data-unique-id="studentID"
+                    class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Student Code</th>
-                            <th>Student name</th>
-                            <th>Date of birth</th>
+                            <th data-field="studentID" data-sortable="true">ID</th>
+                            <th data-field="code" data-sortable="true">Student code</th>
+                            <th data-field="name" data-sortable="true">Student name</th>
+                            <th data-field="birthday" data-sortable="true">Date of birth</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    </tbody>
                 </table>
             </div>
 
@@ -145,8 +150,8 @@
                         <tr>
                             <td colspan="2" style="text-align: center; padding-top: 10px">
                                 <button type="button" class="btn btn-default" onclick="Create()">Add</button>
-                                <button type="button" class="btn btn-default" onclick="Update($('#StudentList tbody tr.highlight').first().attr('studentid'))">Edit</button>
-                                <button type="button" class="btn btn-default" onclick="Delete($('#StudentList tbody tr.highlight').first().attr('studentid'))">Delete</button>
+                                <button type="button" class="btn btn-default" onclick="Update($('#StudentList tbody tr.highlight').first().data('uniqueid'))">Edit</button>
+                                <button type="button" class="btn btn-default" onclick="Delete($('#StudentList tbody tr.highlight').first().data('uniqueid'))">Delete</button>
                                 <button type="button" class="btn btn-default" onclick="ClearFields()">New</button>
                             </td>
                         </tr>
@@ -160,10 +165,12 @@
         </div>
     </div>
 
+   
+
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" type="text/javascript"></script>
     <%--   <script src="../../Scripts/jquery.multiselect.min.js"></script>
     <script src="../../Scripts/jquery.multiselect.filter.min.js"></script>--%>
-
+    <script src="../../Scripts/bootstrap-table.min.js"></script>
     <script src="../../Scripts/Controller/StudentRegister.js" type="text/javascript"></script>
 </asp:Content>
 

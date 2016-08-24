@@ -131,6 +131,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ClassTypeController.cs" />
     <Compile Include="Controllers\FeeLevelController.cs" />
+    <Compile Include="Controllers\FeeObjectController.cs" />
     <Compile Include="Controllers\FunctionController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\ObjectController.cs" />
@@ -226,6 +227,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\student.css" />
     <Content Include="Content\sweetalert.css" />
@@ -305,10 +307,13 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap-table.min.js" />
     <Content Include="Scripts\Controller\Account.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Controller\Converter.js" />
+    <Content Include="Scripts\Controller\FeeObject.js" />
+    <Content Include="Scripts\Controller\Rate.js" />
     <Content Include="Scripts\Controller\StudentClassification.js" />
     <Content Include="Scripts\Controller\StudentRegister.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -328,6 +333,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\sweetalert.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\FeeObject\Index.aspx" />
+    <Content Include="Views\Rate\Create.aspx" />
     <Content Include="Views\Student\Classify.aspx" />
     <Content Include="Views\Student\Register.aspx" />
     <Content Include="Views\Users\Create.aspx" />

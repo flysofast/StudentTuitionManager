@@ -53,12 +53,72 @@
     <input type="text" class="form-control" id="Note">
   </div>  
   <div class="form-group">
-    <input type="button" class="btn btn-default" value="Fee Level Definition ..." id="FeeLevelButton">
+    <input type="button" class="btn btn-default" value="Fee Level Definition ..." id="FeeLevelButton" onclick="FeeLevelModal()">
   </div>  
 </form>
     <input type="button" class="btn btn-default" value="Add" id="addBtn" onclick="create()">
     <input type="button" class="btn btn-default" value="Edit" id="editBtn"  onclick="update()">
     <input type="button" class="btn btn-default" value="Delete" id="deleteBtn"  onclick="delete_function()">
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">FeeLevel Management</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          <div class="form-group">
+            <label for="PaidTime">Paid Time:</label>
+            <input type="hidden" class="form-control" id="FeeLevelId">
+            <input type="text" class="form-control" id="PaidTime">
+          </div>  
+            <div class="form-group">
+            <label for="TotalMoney">Total Money:</label>
+            <input type="text" class="form-control" id="TotalMoney">
+          </div> 
+          <div class="form-group">
+            <label for="Period">Period:</label>
+            <input type="text" class="form-control" id="Period">
+          </div> 
+          <div class="form-group">
+            <input type="button" class="btn btn-default" id="AddFeeLevel" value="Add" >
+            <input type="button" class="btn btn-default" id="EditFeeLevel" value="Edit" >
+            <input type="button" class="btn btn-default" id="RemoveFeeLevel" value="Delete" >
+          </div> 
+        </form>
+        <table id="FeeLevelTab"
+            data-toggle="table"
+            data-show-columns="false"
+            data-search="false"
+            data-mobile-responsive="true"
+            data-check-on-init="true"
+            data-row-style="rowStyle"
+            data-height=300
+            data-unique-id="id"
+           >
+            <thead>
+              <tr>
+                  <th data-field="id" data-sortable="true" >#</th>
+                  <th data-field="PaidTime" data-sortable="true" >Paid Time</th>
+                  <th data-field="TotalMoney" data-sortable="true" >Total Money</th>
+                  <th data-field="Period" data-sortable="true">Period</th>
+              </tr>
+            </thead>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Header" runat="server">

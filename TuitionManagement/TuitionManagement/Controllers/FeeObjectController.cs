@@ -59,7 +59,6 @@ namespace TuitionManagement.Controllers
             object_objEdit.ObjectName = object_obj.ObjectName;
             object_objEdit.Class = object_obj.Class;
             object_objEdit.Notes = object_obj.Notes;
-
             if (db.SaveChanges() == 1)
             {
                 return Json(1, JsonRequestBehavior.AllowGet);
@@ -70,11 +69,12 @@ namespace TuitionManagement.Controllers
             }
         }
 
-        public JsonResult Deactivate_Api(TuitionManagement.Models.Object object_obj)
+        public JsonResult Deactivate_Api(int id)
         {
-            TuitionManagement.Models.Object object_objEdit = db.Object.Where(b => b.ObjectId == object_obj.ObjectId).FirstOrDefault();
-            db.Object.Attach(object_objEdit);
-            db.Object.Remove(object_objEdit);
+            TuitionManagement.Models.Object feeObject = db.Object.Where(b => b.ObjectId == id).FirstOrDefault();
+            db.Object.Attach(feeObject);
+            db.Object.Remove(feeObject);
+
             if (db.SaveChanges() == 1)
             {
                 return Json(1, JsonRequestBehavior.AllowGet);

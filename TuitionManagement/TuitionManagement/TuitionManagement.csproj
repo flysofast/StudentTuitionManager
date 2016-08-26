@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClassTypeController.cs" />
     <Compile Include="Controllers\FeeLevelController.cs" />
     <Compile Include="Controllers\FeeObjectController.cs" />
@@ -227,6 +228,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\login.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\student.css" />
@@ -298,6 +300,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\jquery.vide.min.js" />
     <Content Include="UserControls\Navbar.ascx" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -333,7 +336,10 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\sweetalert.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="video\student.JPG" />
+    <Content Include="video\student.mp4" />
     <Content Include="Views\FeeObject\Index.aspx" />
+    <Content Include="Views\Account\Login.aspx" />
     <Content Include="Views\Rate\Create.aspx" />
     <Content Include="Views\Student\Classify.aspx" />
     <Content Include="Views\Student\Register.aspx" />

@@ -297,6 +297,79 @@ namespace TuitionManagement.Controllers
 
 
         }
+
+        public class StudentClassification
+        {
+            public int StudentID { set; get; }
+            public int ClassID { get; set; }
+        }
+
+        public JsonResult AssignStudentAPI(List<StudentClassification> classifications)
+        {
+            try
+            {
+                string s = "";
+                foreach (var item in classifications)
+                {
+                    var student = db.Student.Find(item.StudentID);
+                    var clss = db.Class.Find(item.ClassID);
+                    if (student != null && clss != null)
+                    {
+                        var invoice = db.Invoice.FirstOrDefault(p => p.StudentId == item.StudentID);
+                        if (invoice != null)
+                        {
+                            invoice.ClassID = item.ClassID;
+                            student.Class.Add(clss);
+                            s += student.StudentName + "\n";
+                        }
+                        
+                    }
+
+                    
+                }
+
+                db.SaveChanges();
+                return Json(s, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(ex.Message, JsonRequestBehavior.AllowGet); 
+            }
+
+        }
+
+        public JsonResult RemoveStudentFromClassAPI(int StudentID,int ClassID)
+        {
+            try
+            {
+                var student = db.Student.Find(StudentID);
+                var cls = db.Class.Find(ClassID);
+                var invoice = db.Invoice.FirstOrDefault(p => p.ClassID == ClassID && p.StudentId == StudentID);
+
+                if (student != null && cls != null && invoice != null)
+                {
+                    student.Class = null;
+                    invoice.ClassID = -1;
+                    db.SaveChanges();
+                    return Json(1, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json("Related infomation not found. Cancelled process.", JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(ex.Message, JsonRequestBehavior.AllowGet);
+            }
+        }
+
     }
 }
 

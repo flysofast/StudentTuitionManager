@@ -46,7 +46,7 @@ function Create() {
             swal("Error", data.responseText, "error");
         },
         success: function (data) {
-            swal("Successfully!", "Registration successful! InvoiceID: " + data.invoiceID, "success");
+            swal("Success!", "Registration successed!","success");
             LoadTableData();
             //console.log(data);
             //if (data == 1) {
@@ -61,11 +61,11 @@ function Create() {
 function Delete(StudentID) {
     swal({
         title: "Are you sure?",
-        text: "You will not be able to recover this imaginary file!",
+        text: "Deleting this student will result in removing any other related information including invoices, registration...!",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Yes, delete this!",
         closeOnConfirm: false
     }, function () {
         var obj = { id: StudentID };
@@ -258,31 +258,15 @@ var populateInfoForm = function (data) {
 }
 
 $(function () {
-    //$('#StudentList').on('click', 'tbody tr', function (event) {
-    //});
-
-
 
     $("#dpBirthday").datepicker({ dateFormat: "dd/mm/yy" });
     //$("#opRegGroup").multiselect().multiselectfilter();
 
-
-
-
     LoadTableData();
-
-
-    //$table.bootstrapTable({
-    //    onClickCell: function (field, value, row, element) {
-    //        console.log('adsdasadad');
-    //        //swal(item.studentID);
-    //    }
-    //});
 
     $table.on('click-row.bs.table', function (e, row, $element) {
         $element.addClass('highlight').siblings().removeClass('highlight');
         FindStudentByID(row.studentID, populateInfoForm);
-
 
     });
     populateClassInfo();

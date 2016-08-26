@@ -1,21 +1,19 @@
-﻿#form-table{
-    border:none;
-    width:100%;
-     border-collapse:separate;
-    border-spacing:0 5px;
+﻿#form-table {
+    border: none;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 5px;
 }
 
-#form-table .readOnly{
-    background-color:lightyellow;
+    #form-table .readOnly {
+        background-color: lightyellow;
+    }
+
+.classification-table tr:hover {
+    cursor: pointer;
 }
 
-#StudentList tr:hover{
-    cursor:pointer;
+.classification-table tbody tr.highlight td {
+    background-color: lightgray;
 }
-
-#StudentList tbody tr.highlight td { 
-    background-color: darkgray;
-}
-
-
 

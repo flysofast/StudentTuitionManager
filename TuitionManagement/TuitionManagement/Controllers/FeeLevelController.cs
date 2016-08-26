@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TuitionManagement.Models;
-
 namespace TuitionManagement.Controllers
 {
     public class FeeLevelController : Controller
@@ -38,6 +37,20 @@ namespace TuitionManagement.Controllers
         {
             ViewData["data"] = db.FeeLevel.ToList();
             return View();
+        }
+
+        public JsonResult Select_Api_By_ObjID(int objID)
+        {
+            var result = db.FeeLevel.Where(p => p.ObjectID == objID).Select(p => new
+            {
+                p.FeeLevelId,
+                p.PaidTime,
+                p.TotalMoney,
+                p.Period,
+                p.ObjectID
+
+            }).ToList();
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult Create_Api(FeeLevel feelevel)
@@ -79,11 +92,11 @@ namespace TuitionManagement.Controllers
             }
         }
 
-        public JsonResult Deactivate_Api(FeeLevel feelevel)
+        public JsonResult Deactivate_Api(int id)
         {
-            FeeLevel feelevelEdit = db.FeeLevel.Where(b => b.FeeLevelId == feelevel.FeeLevelId).FirstOrDefault();
-            db.FeeLevel.Attach(feelevel);
-            db.FeeLevel.Remove(feelevel);
+            FeeLevel feelevelEdit = db.FeeLevel.Where(b => b.FeeLevelId == id).FirstOrDefault();
+            db.FeeLevel.Attach(feelevelEdit);
+            db.FeeLevel.Remove(feelevelEdit);
 
             if (db.SaveChanges() == 1)
             {

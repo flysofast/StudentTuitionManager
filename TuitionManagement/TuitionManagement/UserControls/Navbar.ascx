@@ -3,10 +3,8 @@
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account Management
     <span class="caret"></span></a>
     <ul class="dropdown-menu">
-        <li><a href="#">Account Management</a></li>
-        <li><a href="#">Map Role With Functions</a></li>
-        <li><a href="#">Role</a></li> 
-        <li><a href="#">Function</a></li> 
+        <li><a href="/Users/search">Account Management</a></li>
+        <li><a href="/Users/create">Account Create</a></li>
     </ul>
 </li>
 <li class="dropdown">
@@ -21,12 +19,12 @@
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Course Management
     <span class="caret"></span></a>
     <ul class="dropdown-menu">
-        <li><a href="#">Rate</a></li>
+        <li><a href="/rate/Create">Rate</a></li>
         <li><a href="#">Class</a></li>
-        <li><a href="#">Fee Object</a></li>
+        <li><a href="/FeeObject/index">Fee Object</a></li>
     </ul>
 </li>
-<li><a href="#">Invoices Management</a></li>
+<li><a href="/invoice/Create">Invoices Management</a></li>
 <li><a href="#">Tuition Management</a></li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Statics Management

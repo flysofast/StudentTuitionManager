@@ -301,6 +301,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\Controller\Invoice.js" />
     <Content Include="Scripts\jquery.vide.min.js" />
     <Content Include="UserControls\Navbar.ascx" />
     <EntityDeploy Include="Models\Model1.edmx">
@@ -341,6 +342,9 @@
     <Content Include="video\student.mp4" />
     <Content Include="Views\FeeObject\Index.aspx" />
     <Content Include="Views\Account\Login.aspx" />
+    <Content Include="Views\Invoice\Create.aspx" />
+    <Content Include="Views\Invoice\Edit.aspx" />
+    <Content Include="Views\Invoice\Search.aspx" />
     <Content Include="Views\Rate\Create.aspx" />
     <Content Include="Views\Student\Classify.aspx" />
     <Content Include="Views\Student\Register.aspx" />
